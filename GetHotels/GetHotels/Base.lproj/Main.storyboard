@@ -508,6 +508,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="QTs-y6-LSY" kind="relationship" relationship="viewControllers" id="oRx-Gl-qRw"/>
+                        <segue destination="6Av-o2-MBC" kind="relationship" relationship="viewControllers" id="FDF-6N-u0v"/>
                         <segue destination="Inh-Kn-Hon" kind="relationship" relationship="viewControllers" id="iz1-hz-Fql"/>
                     </connections>
                 </tabBarController>
@@ -521,7 +522,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QTs-y6-LSY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="酒店" image="hotel" selectedImage="hotel" id="WVy-n4-6qe"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" translucent="NO" id="FE5-Op-9jx">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="FE5-Op-9jx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.023529411760000001" green="0.47450980390000003" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -648,8 +649,50 @@
             </objects>
             <point key="canvasLocation" x="911" y="1019"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Flo-RS-vzI">
+            <objects>
+                <viewController id="Bgz-yN-R2o" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mYS-86-tGZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="PEK-bu-dGy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FgA-DT-9k7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ntt-j5-inF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIR-Ng-GD1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2156" y="509.59520239880067"/>
+        </scene>
+        <!--航空-->
+        <scene sceneID="boK-Js-VgG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Av-o2-MBC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="航空" image="fly" selectedImage="fly" id="adg-Vm-ID9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="nY6-m1-ef4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.28835195299999999" green="0.63516902919999996" blue="0.99662631749999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.28835195299999999" green="0.63516902919999996" blue="0.99662631749999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.28835195299999999" green="0.63516902919999996" blue="0.99662631749999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bgz-yN-R2o" kind="relationship" relationship="rootViewController" id="vQE-LT-8ev"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Yw-hv-4P5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1216.8" y="509.59520239880067"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="fly" width="20" height="20"/>
         <image name="hotel" width="22" height="21"/>
         <image name="my" width="20" height="22"/>
         <image name="rain" width="699" height="701"/>
