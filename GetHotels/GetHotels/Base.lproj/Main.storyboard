@@ -624,7 +624,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Inh-Kn-Hon" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="my" id="hrU-f3-arv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="X4X-Yy-udP">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="X4X-Yy-udP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.16726994510000001" green="0.54823535680000002" blue="0.94219803810000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
