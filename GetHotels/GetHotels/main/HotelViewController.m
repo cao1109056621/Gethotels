@@ -160,7 +160,31 @@
 {
     [self networkRequest];
     [_idSearchBar resignFirstResponder];
+    _idSearchBar.text = @"";
     return YES;
+}
+
+//设置每一组中每一行的细胞被点击以后要做的事情
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    //判断当前tableView是否为_activityTableView（这个条件判断常用在一个页面中有多个taleView的时候）
+    if ([tableView isEqual:_gethotelView]) {
+        //取消选中
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+//当某一个页面跳转行为将要发生的时候
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"firstTOsecond"]) {
+      /*  //当从列表页到详情页的这个跳转要发生的时候
+        //1、获取要传递到下一页去的数据
+        NSIndexPath *indexPath = [_gethotelView indexPathForSelectedRow];
+        HotelModel *activity = _arr[indexPath.row];
+        //2、获取下一页这个实例
+        DetailViewController *detailVC = segue.destinationViewController;
+        //3、把数据给下一页预备好的接受容器
+        detailVC.activity = activity;
+       */
+    }
 }
 
 //每次离开了这个页面的时候
