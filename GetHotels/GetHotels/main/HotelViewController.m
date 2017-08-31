@@ -504,9 +504,9 @@
         [Utilities popUpAlertViewWithMsg:@"请正确设置开始日期和结束日期" andTitle:@"提示" onView:self];
     }else{
         NSDictionary *para = @{@"pageNum":@(page),@"pageSize":@(perPage),@"inTime":@(startTime),@"outTime":@(endTime),@"sortingId":brr,@"startId":@(ar),@"priceId":@(arryer)};
-        NSLog(@"page = %ld  perPage = %ld  startTime = %f  endTime = %f  ar = %ld  brr = %@",(long)page,(long)perPage,startTime,endTime,(long)ar,brr);
+        NSLog(@"page = %ld  perPage = %ld  startTime = %f  endTime = %f  ar = %ld  brr = %@ priceId = %ld",(long)page,(long)perPage,startTime,endTime,(long)ar,brr,(long)arryer);
         
-        NSString *urlstring=@"https://gethotels.fisheep.com.cn/findHotelByCity_edu";
+        NSString *urlstring=@"https://gethotels.fisheep.com.cn/hotel/findHotelByCity_edu";
         AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
         manger.responseSerializer=[AFHTTPResponseSerializer serializer];
         [manger GET:urlstring parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
