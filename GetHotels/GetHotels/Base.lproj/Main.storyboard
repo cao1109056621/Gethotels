@@ -650,8 +650,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="hotel" width="16" height="16"/>
-        <image name="my" width="16" height="16"/>
-        <image name="rain" width="16" height="16"/>
+        <image name="hotel" width="22" height="21"/>
+        <image name="my" width="20" height="22"/>
+        <image name="rain" width="699" height="701"/>
     </resources>
 </document>
