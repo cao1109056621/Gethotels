@@ -67,6 +67,8 @@
 		B22B45971F57FE3100F3DE8A /* HotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B45901F57FE3100F3DE8A /* HotelTableViewCell.m */; };
 		B22B45981F57FE3100F3DE8A /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B45921F57FE3100F3DE8A /* HotelViewController.m */; };
 		B22B45991F57FE3100F3DE8A /* locationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B45941F57FE3100F3DE8A /* locationViewController.m */; };
+		B22B459B1F57FFEF00F3DE8A /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = B22B459A1F57FFEF00F3DE8A /* Cities.plist */; };
+		B22B459D1F58005300F3DE8A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B22B459C1F58005300F3DE8A /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +99,6 @@
 		84562CB51F57DD6C007B95DA /* GetHotels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GetHotels.xcdatamodel; sourceTree = "<group>"; };
 		84562CB71F57DD6D007B95DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84562CBA1F57DD6D007B95DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		84562CBC1F57DD6D007B95DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84562CC11F57DD6D007B95DA /* GetHotelsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetHotelsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84562CC51F57DD6D007B95DA /* GetHotelsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetHotelsTests.m; sourceTree = "<group>"; };
 		84562CC71F57DD6D007B95DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -199,6 +200,8 @@
 		B22B45921F57FE3100F3DE8A /* HotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelViewController.m; sourceTree = "<group>"; };
 		B22B45931F57FE3100F3DE8A /* locationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = locationViewController.h; sourceTree = "<group>"; };
 		B22B45941F57FE3100F3DE8A /* locationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = locationViewController.m; sourceTree = "<group>"; };
+		B22B459A1F57FFEF00F3DE8A /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
+		B22B459C1F58005300F3DE8A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1BE28BF9A1FA9D700B0B9F2 /* libPods-GetHotels.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GetHotels.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -289,7 +292,8 @@
 				84562CAB1F57DD6C007B95DA /* AppDelegate.h */,
 				84562CAC1F57DD6C007B95DA /* AppDelegate.m */,
 				84562CB71F57DD6D007B95DA /* Assets.xcassets */,
-				84562CBC1F57DD6D007B95DA /* Info.plist */,
+				B22B459C1F58005300F3DE8A /* Info.plist */,
+				B22B459A1F57FFEF00F3DE8A /* Cities.plist */,
 				84562CA91F57DD6C007B95DA /* main.m */,
 				84562D461F57DEB7007B95DA /* PrefixHeader.pch */,
 			);
@@ -585,6 +589,7 @@
 				TargetAttributes = {
 					84562CA41F57DD6C007B95DA = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = DZT4MGJM2Z;
 						ProvisioningStyle = Automatic;
 					};
 					84562CC01F57DD6D007B95DA = {
@@ -624,6 +629,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B22B459D1F58005300F3DE8A /* Info.plist in Resources */,
+				B22B459B1F57FFEF00F3DE8A /* Cities.plist in Resources */,
 				84562D591F57E112007B95DA /* Second.storyboard in Resources */,
 				84562CBB1F57DD6D007B95DA /* LaunchScreen.storyboard in Resources */,
 				84562CB81F57DD6D007B95DA /* Assets.xcassets in Resources */,
@@ -896,6 +903,7 @@
 			baseConfigurationReference = 54BE4D7EF5AF33920B1855F9 /* Pods-GetHotels.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DZT4MGJM2Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GetHotels",
@@ -903,6 +911,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GetHotels/PrefixHeader.pch;
 				INFOPLIST_FILE = GetHotels/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -918,6 +927,7 @@
 			baseConfigurationReference = 6684E2F0351D5687E763D75F /* Pods-GetHotels.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DZT4MGJM2Z;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/GetHotels",
@@ -925,6 +935,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = GetHotels/PrefixHeader.pch;
 				INFOPLIST_FILE = GetHotels/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
