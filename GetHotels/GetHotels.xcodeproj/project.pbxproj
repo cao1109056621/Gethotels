@@ -62,6 +62,11 @@
 		846B26201F57EC1B00F4876B /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846B261A1F57EC1B00F4876B /* SignupViewController.m */; };
 		846B26211F57EC1B00F4876B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846B261C1F57EC1B00F4876B /* ViewController.m */; };
 		846B26241F57ED8E00F4876B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846B26231F57ED8E00F4876B /* UserModel.m */; };
+		B22B45951F57FE3100F3DE8A /* cityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B458C1F57FE3100F3DE8A /* cityModel.m */; };
+		B22B45961F57FE3100F3DE8A /* cityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B458E1F57FE3100F3DE8A /* cityViewController.m */; };
+		B22B45971F57FE3100F3DE8A /* HotelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B45901F57FE3100F3DE8A /* HotelTableViewCell.m */; };
+		B22B45981F57FE3100F3DE8A /* HotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B45921F57FE3100F3DE8A /* HotelViewController.m */; };
+		B22B45991F57FE3100F3DE8A /* locationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B45941F57FE3100F3DE8A /* locationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +189,16 @@
 		846B261C1F57EC1B00F4876B /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		846B26221F57ED8E00F4876B /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		846B26231F57ED8E00F4876B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		B22B458B1F57FE3100F3DE8A /* cityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cityModel.h; sourceTree = "<group>"; };
+		B22B458C1F57FE3100F3DE8A /* cityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cityModel.m; sourceTree = "<group>"; };
+		B22B458D1F57FE3100F3DE8A /* cityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cityViewController.h; sourceTree = "<group>"; };
+		B22B458E1F57FE3100F3DE8A /* cityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cityViewController.m; sourceTree = "<group>"; };
+		B22B458F1F57FE3100F3DE8A /* HotelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelTableViewCell.h; sourceTree = "<group>"; };
+		B22B45901F57FE3100F3DE8A /* HotelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelTableViewCell.m; sourceTree = "<group>"; };
+		B22B45911F57FE3100F3DE8A /* HotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotelViewController.h; sourceTree = "<group>"; };
+		B22B45921F57FE3100F3DE8A /* HotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotelViewController.m; sourceTree = "<group>"; };
+		B22B45931F57FE3100F3DE8A /* locationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = locationViewController.h; sourceTree = "<group>"; };
+		B22B45941F57FE3100F3DE8A /* locationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = locationViewController.m; sourceTree = "<group>"; };
 		E1BE28BF9A1FA9D700B0B9F2 /* libPods-GetHotels.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GetHotels.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -260,6 +275,7 @@
 				84562CF41F57DE6E007B95DA /* Controller */,
 				84562CF51F57DE6E007B95DA /* Model */,
 				84562CFA1F57DE6E007B95DA /* Utility */,
+				B22B458A1F57FE3100F3DE8A /* main */,
 				846B26121F57EC1B00F4876B /* MyAndsignin */,
 				84562D271F57DE6E007B95DA /* View */,
 				84562CA81F57DD6C007B95DA /* Supporting Files */,
@@ -482,6 +498,23 @@
 			path = MyAndsignin;
 			sourceTree = "<group>";
 		};
+		B22B458A1F57FE3100F3DE8A /* main */ = {
+			isa = PBXGroup;
+			children = (
+				B22B458B1F57FE3100F3DE8A /* cityModel.h */,
+				B22B458C1F57FE3100F3DE8A /* cityModel.m */,
+				B22B458D1F57FE3100F3DE8A /* cityViewController.h */,
+				B22B458E1F57FE3100F3DE8A /* cityViewController.m */,
+				B22B458F1F57FE3100F3DE8A /* HotelTableViewCell.h */,
+				B22B45901F57FE3100F3DE8A /* HotelTableViewCell.m */,
+				B22B45911F57FE3100F3DE8A /* HotelViewController.h */,
+				B22B45921F57FE3100F3DE8A /* HotelViewController.m */,
+				B22B45931F57FE3100F3DE8A /* locationViewController.h */,
+				B22B45941F57FE3100F3DE8A /* locationViewController.m */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -670,6 +703,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84562D3D1F57DE6E007B95DA /* JSONS.m in Sources */,
+				B22B45991F57FE3100F3DE8A /* locationViewController.m in Sources */,
 				84562D431F57DE6E007B95DA /* StorageMgr.m in Sources */,
 				84562D371F57DE6E007B95DA /* NSDataEx.m in Sources */,
 				84562D361F57DE6E007B95DA /* MD5DataSigner.m in Sources */,
@@ -690,16 +724,19 @@
 				84562D421F57DE6E007B95DA /* RequestAPI.m in Sources */,
 				846B26211F57EC1B00F4876B /* ViewController.m in Sources */,
 				84562D401F57DE6E007B95DA /* NSDateFormatter+Category.m in Sources */,
+				B22B45981F57FE3100F3DE8A /* HotelViewController.m in Sources */,
 				84562D381F57DE6E007B95DA /* openssl_wrapper.m in Sources */,
 				84562D3C1F57DE6E007B95DA /* ErrorHandler.m in Sources */,
 				84562D351F57DE6E007B95DA /* DataVerifier.m in Sources */,
 				84562D3E1F57DE6E007B95DA /* NSData+Base64.m in Sources */,
 				84562D331F57DE6E007B95DA /* base64.m in Sources */,
 				84562CB61F57DD6C007B95DA /* GetHotels.xcdatamodeld in Sources */,
+				B22B45971F57FE3100F3DE8A /* HotelTableViewCell.m in Sources */,
 				846B261E1F57EC1B00F4876B /* MyTableViewCell.m in Sources */,
 				84562D2B1F57DE6E007B95DA /* TADotView.m in Sources */,
 				84562D2F1F57DE6E007B95DA /* UIView+SDExtension.m in Sources */,
 				846B261F1F57EC1B00F4876B /* SigninViewController.m in Sources */,
+				B22B45961F57FE3100F3DE8A /* cityViewController.m in Sources */,
 				84562D3B1F57DE6E007B95DA /* AppAPIClient.m in Sources */,
 				846B26201F57EC1B00F4876B /* SignupViewController.m in Sources */,
 				84562D2E1F57DE6E007B95DA /* SDCycleScrollView.m in Sources */,
@@ -707,6 +744,7 @@
 				84562CAA1F57DD6C007B95DA /* main.m in Sources */,
 				84562D451F57DE6E007B95DA /* Utilities.m in Sources */,
 				84562D2C1F57DE6E007B95DA /* TAPageControl.m in Sources */,
+				B22B45951F57FE3100F3DE8A /* cityModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
