@@ -74,7 +74,6 @@
     [super awakeFromNib];
 }
 - (void)viewDidLoad {
-    [self networkRequest];
     [super viewDidLoad];
     [self locaionConfig];
     [self dataInitialize];
@@ -118,29 +117,25 @@
     return _arr.count;
 }
 //细胞长什么样
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hotelcell" forIndexPath:indexPath];
-    NSDictionary *dict = _arr[indexPath.row];
+    mainModel *getHotel = _arr[indexPath.row];
     
     
-    //第一个坐标
     
-    CLLocation *current=[[CLLocation alloc] initWithLatitude:31.221 longitude:119.508619];
+    CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:*(getHotel.latitude) longitude:*(getHotel.longitude)];
+    CLLocation *nowLocation = [[CLLocation alloc] initWithLatitude:_location.coordinate.latitude longitude:_location.coordinate.longitude];
     
-    //第二个坐标
+    int distanceMeters = [lastLocation distanceFromLocation:nowLocation];
+    NSLog(@"地点   22222%d",distanceMeters);
     
-    CLLocation *before=[[CLLocation alloc] initWithLatitude:32.206340 longitude:119.425600];
-    
-    //计算距离
-    
-    CLLocationDistance meters=[current distanceFromLocation:before];
-    
-    
-    NSURL *url = dict[@"hotel_img"];
+    NSURL *url =[NSURL URLWithString:getHotel.hotelimage];
     [cell.imageview sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon"]];
-    cell.nameLabel.text = dict[@"hotel_name"];
-    cell.placeLabel.text = dict[@"hotel_address"];
-    cell.priceLabel.text = [NSString stringWithFormat:@"¥ %@ 元", dict[@"now_price"]];
+    cell.nameLabel.text = getHotel.name;
+    cell.placeLabel.text = getHotel.hotelAddress;
+    cell.priceLabel.text = [NSString stringWithFormat:@"¥ %@ 元",getHotel.hotelPrice] ;
     return cell;
 }
 
@@ -453,13 +448,13 @@
     manger.responseSerializer=[AFHTTPResponseSerializer serializer];
     [manger GET:urlstring parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-        NSDictionary *result = dict[@"content"];
-        //NSLog(@"%@",result);
+        if ([dict[@"result"] integerValue] == 1){
+            NSDictionary *result = dict[@"content"];
+            _hotel = [[mainModel alloc]initWithDetailDictionary:result];
         [_arr addObject:result];
-        NSLog(@"_arr = %@",_arr);
         //刷新表格
         [_gethotelView reloadData];
-
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"请求失败");
     }];

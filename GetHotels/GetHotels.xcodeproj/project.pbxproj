@@ -69,6 +69,7 @@
 		B22B45991F57FE3100F3DE8A /* locationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22B45941F57FE3100F3DE8A /* locationViewController.m */; };
 		B22B459B1F57FFEF00F3DE8A /* Cities.plist in Resources */ = {isa = PBXBuildFile; fileRef = B22B459A1F57FFEF00F3DE8A /* Cities.plist */; };
 		B22B459D1F58005300F3DE8A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B22B459C1F58005300F3DE8A /* Info.plist */; };
+		B22F34361F59085D005EBD7D /* mainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F34351F59085D005EBD7D /* mainModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +203,8 @@
 		B22B45941F57FE3100F3DE8A /* locationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = locationViewController.m; sourceTree = "<group>"; };
 		B22B459A1F57FFEF00F3DE8A /* Cities.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cities.plist; sourceTree = "<group>"; };
 		B22B459C1F58005300F3DE8A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B22F34341F59085D005EBD7D /* mainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainModel.h; sourceTree = "<group>"; };
+		B22F34351F59085D005EBD7D /* mainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainModel.m; sourceTree = "<group>"; };
 		E1BE28BF9A1FA9D700B0B9F2 /* libPods-GetHotels.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GetHotels.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -505,6 +508,8 @@
 		B22B458A1F57FE3100F3DE8A /* main */ = {
 			isa = PBXGroup;
 			children = (
+				B22F34341F59085D005EBD7D /* mainModel.h */,
+				B22F34351F59085D005EBD7D /* mainModel.m */,
 				B22B458B1F57FE3100F3DE8A /* cityModel.h */,
 				B22B458C1F57FE3100F3DE8A /* cityModel.m */,
 				B22B458D1F57FE3100F3DE8A /* cityViewController.h */,
@@ -745,6 +750,7 @@
 				846B261F1F57EC1B00F4876B /* SigninViewController.m in Sources */,
 				B22B45961F57FE3100F3DE8A /* cityViewController.m in Sources */,
 				84562D3B1F57DE6E007B95DA /* AppAPIClient.m in Sources */,
+				B22F34361F59085D005EBD7D /* mainModel.m in Sources */,
 				846B26201F57EC1B00F4876B /* SignupViewController.m in Sources */,
 				84562D2E1F57DE6E007B95DA /* SDCycleScrollView.m in Sources */,
 				84562CAD1F57DD6C007B95DA /* AppDelegate.m in Sources */,
