@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "mainModel.h"
+#import "HotelModel.h"
 
 @interface HotelViewController : UIViewController
-@property(strong,nonatomic) mainModel * hotel;
+@property(strong,nonatomic) HotelModel * htmodel;
 @end

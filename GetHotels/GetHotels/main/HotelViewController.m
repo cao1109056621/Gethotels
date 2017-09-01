@@ -11,16 +11,11 @@
 #import "UIImageView+WebCache.h"
 #import "SDCycleScrollView.h"
 #import <CoreLocation/CoreLocation.h>
-#import "HotelModel.h"
+#import "hotelModel.h"
 @interface HotelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,SDCycleScrollViewDelegate,UITextFieldDelegate>{
     NSInteger flag;
-    NSInteger ar;
-    NSString *brr;
-    NSInteger arryer;
-    NSInteger page;
-    NSInteger perPage;
-    NSString * intime;
-    NSString * outtime;
+    NSInteger pagenum;
+    NSInteger pagesize;
     BOOL firstVisit;
     BOOL isLoading;
     NSTimeInterval followUpTime;
@@ -61,7 +56,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *highttolow;
 @property (weak, nonatomic) IBOutlet UIButton *neartofar;
 - (IBAction)neartofar:(UIButton *)sender forEvent:(UIEvent *)event;
-
+@property (nonatomic) NSTimeInterval inTime;
+@property (nonatomic) NSTimeInterval outTime;
 
 
 
@@ -76,12 +72,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self locaionConfig];
+    [self mainnetworRequest];
     [self dataInitialize];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
     _idSearchBar.returnKeyType = UIReturnKeySearch;//变为发送按钮
     _idSearchBar.delegate = self;//设置代理
-    perPage=10;
-    page=1;
+
    
     _arry = @[@"image01",@"image02",@"image03",@"image04",@"image05"];
     self.bannerView.imageURLStringsGroup = _arry;
@@ -121,21 +117,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hotelcell" forIndexPath:indexPath];
-    mainModel *getHotel = _arr[indexPath.row];
     
-    
-    
-    CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:*(getHotel.latitude) longitude:*(getHotel.longitude)];
+    //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
+    HotelModel*htmodel = _arr[indexPath.row];
+
+    CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:31.5849 longitude:120.486];
     CLLocation *nowLocation = [[CLLocation alloc] initWithLatitude:_location.coordinate.latitude longitude:_location.coordinate.longitude];
     
     int distanceMeters = [lastLocation distanceFromLocation:nowLocation];
-    NSLog(@"地点   22222%d",distanceMeters);
-    
-    NSURL *url =[NSURL URLWithString:getHotel.hotelimage];
-    [cell.imageview sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon"]];
-    cell.nameLabel.text = getHotel.name;
-    cell.placeLabel.text = getHotel.hotelAddress;
-    cell.priceLabel.text = [NSString stringWithFormat:@"¥ %@ 元",getHotel.hotelPrice] ;
+    NSLog(@"%d公里",distanceMeters/1000);
+
+    //将http请求的字符串转换为NSURL
+    NSURL *URL =[NSURL URLWithString:htmodel.imgurl];
+    //依靠SDWebImage来异步地下载一张远程路径下的图片并三级缓存在项目中，同时为下载的时间周期过程中设置一张临时占位图
+    [cell.imageview sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"icon"]];
+    cell.nameLabel.text = htmodel.htname;
+    cell.placeLabel.text = htmodel.htadd;
+    cell.priceLabel.text =[NSString stringWithFormat:@"¥%ld元",(long)htmodel.htprice];
+
     return cell;
 }
 
@@ -441,23 +440,94 @@
 }
 
 - (void)networkRequest{
-    NSString *urlstring=@"https://gethotels.fisheep.com.cn/findHotelById";
-    //int y =(arc4random() % 20)+1;
-    NSDictionary *param=@{@"id":_idSearchBar.text};
-    AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-    manger.responseSerializer=[AFHTTPResponseSerializer serializer];
-    [manger GET:urlstring parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-        if ([dict[@"result"] integerValue] == 1){
-            NSDictionary *result = dict[@"content"];
-            _hotel = [[mainModel alloc]initWithDetailDictionary:result];
-        [_arr addObject:result];
-        //刷新表格
-        [_gethotelView reloadData];
+    // 创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
+    //设置接口地址
+    NSString *request = @"/findHotelById";
+    //设置接口入参
+    //开始请求
+    [RequestAPI requestURL:request withParameters:@{@"id":_idSearchBar.text} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //成功以后要做的事情在此处执行
+        NSLog(@"responseObject = %@", responseObject);
+        [_aiv stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1){
+            //业务逻辑成功的情况下
+            NSDictionary * result = responseObject[@"content"];
+            
+            //NSLog(@"result = %@",result);
+            /*for (NSDictionary *dict in content)
+             //用ActivityModel类中定义的初始化方法nitWithDictionary:将便利的来的字典转换成为ActivityModel 对象
+             HotelModel *activityModel = [[HotelModel alloc]initWithDictionary:dict];
+             //将上述实例化好的activityModel对象插入——arr数组中*/
+            
+            [_arr addObject:result];
+            //NSLog(@"_brr = %@",_brr);
+            
+            //刷新表格
+            [_gethotelView reloadData];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *orrorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:orrorMsg andTitle:nil onView:self];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //失败以后要做的事情在此处执行
+        NSLog(@"statusCode = %ld",(long)statusCode);
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
+    
+
+}
+
+-(void)mainnetworRequest{
+    //开始请求
+    //NSDictionary * para = [NSDictionary new];
+    NSString *inTimeStr = [Utilities dateStrFromCstampTime:_inTime withDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString *outTimeStr = [Utilities dateStrFromCstampTime:_outTime withDateFormat:@"yyyy-MM-dd HH:mm"];
+    pagenum = 1;
+    pagesize = 20;
+    [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:@{@"city_name":@"无锡",@"pageNum":@(pagenum),@"pageSize":@(pagesize),@"startId":@1,@"priceId":@1,@"sortingId":@"1",@"inTime":inTimeStr,@"outTime":outTimeStr,@"wxlongitude":@"",@"wxlatitude":@""} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //成功以后要做的事情在此处执行
+        NSLog(@"responseObject = %@", responseObject);
+        [_aiv stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1){
+            //业务逻辑成功的情况下
+            NSDictionary * content = responseObject[@"content"];
+            NSDictionary * hotel = content[@"hotel"];
+            NSArray * list = hotel[@"list"];
+            
+            
+            //NSLog(@"content = %@",content);
+            //NSLog(@"hotel = %@",hotel);
+            //NSLog(@"list = %@",list);
+            
+            for (NSDictionary *dict in list){
+                //用ActivityModel类中定义的初始化方法nitWithDictionary:将便利的来的字典转换成为ActivityModel 对象
+                HotelModel *htModel = [[HotelModel alloc]initWithDictionary:dict];
+                //将上述实例化好的activityModel对象插入——arr数组中
+                [_arr addObject:htModel];
+                //NSLog(@"dict = %@",htModel);
+            }
+            //刷新表格
+            [_gethotelView reloadData];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *orrorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:orrorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //失败以后要做的事情在此处执行
+        NSLog(@"statusCode = %ld",(long)statusCode);
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+    
 }
 
 @end
