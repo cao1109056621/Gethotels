@@ -78,7 +78,7 @@
     demoContainerView.contentSize = CGSizeMake(self.view.frame.size.width, self.bannerView.frame.size.height );
     [self.bannerView addSubview:demoContainerView];
     
-    NSArray *imageNames = @[@"1",@"2",@"3",@"4"];
+    NSArray *imageNames = @[@"reser1",@"reser2",@"reser3",@"reser4",@"reser5"];
     
     // 网络加载 --- 创建带标题的图片轮播器
     SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, -64, UI_SCREEN_W, 150) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
