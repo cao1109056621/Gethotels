@@ -93,7 +93,7 @@
                                             <outlet property="nameLabel" destination="Qc0-O6-HAe" id="ds3-kp-UE2"/>
                                             <outlet property="placeLabel" destination="3BQ-hW-IdQ" id="ZEp-Ul-Hkg"/>
                                             <outlet property="priceLabel" destination="hWP-aB-FN6" id="ytH-RX-I5m"/>
-                                            <segue destination="cCD-cy-MDk" kind="show" id="IRs-Q2-XBO"/>
+                                            <segue destination="bqn-vJ-r6Y" kind="show" id="AWk-kY-132"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -686,7 +686,7 @@
                         <viewControllerLayoutGuide type="bottom" id="juU-ui-gmc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9LX-nd-eYb">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -722,6 +722,6 @@
         <image name="fly" width="20" height="20"/>
         <image name="hotel" width="22" height="21"/>
         <image name="my" width="20" height="22"/>
-        <image name="rain" width="699" height="701"/>
+        <image name="rain" width="349" height="350"/>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5MX-An-ocd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5MX-An-ocd">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -285,7 +285,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="validate" translatesAutoresizingMaskIntoConstraints="NO" id="N3p-rf-tLC">
-                                        <rect key="frame" x="45" y="138" width="18.5" height="22"/>
+                                        <rect key="frame" x="45" y="138" width="17.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="N3p-rf-tLC" secondAttribute="height" multiplier="35:44" id="0bs-jj-NHH"/>
                                         </constraints>
@@ -456,7 +456,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="validate" translatesAutoresizingMaskIntoConstraints="NO" id="NHr-xe-bdS">
-                                        <rect key="frame" x="45" y="130" width="18.5" height="22"/>
+                                        <rect key="frame" x="45" y="130" width="17.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="NHr-xe-bdS" secondAttribute="height" multiplier="35:44" id="K35-jQ-BxP"/>
                                         </constraints>
@@ -480,7 +480,7 @@
                                         </connections>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="validate" translatesAutoresizingMaskIntoConstraints="NO" id="RJK-w3-6tl">
-                                        <rect key="frame" x="45" y="185" width="18.5" height="22"/>
+                                        <rect key="frame" x="45" y="185" width="17.5" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="RJK-w3-6tl" secondAttribute="height" multiplier="35:44" id="4nz-4L-w54"/>
                                         </constraints>
@@ -591,8 +591,8 @@
     </scenes>
     <resources>
         <image name="cellphone" width="15" height="23"/>
-        <image name="my" width="16" height="16"/>
-        <image name="myself" width="16" height="16"/>
+        <image name="my" width="20" height="22"/>
+        <image name="myself" width="250" height="250"/>
         <image name="validate" width="17" height="22"/>
         <image name="wire" width="16" height="16"/>
     </resources>

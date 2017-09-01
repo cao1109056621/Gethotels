@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>GetHotelsUITests copy.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>84562CCB1F57DD6D007B95DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>84F5EFA81F593A00001F477C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
