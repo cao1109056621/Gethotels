@@ -19,6 +19,8 @@
     NSInteger arryer;
     NSInteger page;
     NSInteger perPage;
+    NSString * intime;
+    NSString * outtime;
     BOOL firstVisit;
     BOOL isLoading;
     NSTimeInterval followUpTime;
@@ -89,7 +91,7 @@
     [super awakeFromNib];
 }
 - (void)viewDidLoad {
-
+    [self networkRequest];
     [super viewDidLoad];
     [self locaionConfig];
     [self dataInitialize];
@@ -99,7 +101,7 @@
     perPage=10;
     page=1;
    
-    _arry = @[@"img_01",@"img_02",@"img_03",@"img_04"];
+    _arry = @[@"image01",@"image02",@"image03",@"image04",@"image05"];
     self.bannerView.imageURLStringsGroup = _arry;
     self.bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     self.bannerView.delegate = self;
@@ -136,6 +138,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hotelcell" forIndexPath:indexPath];
     NSDictionary *dict = _arr[indexPath.row];
+    
+    
+    //第一个坐标
+    
+    CLLocation *current=[[CLLocation alloc] initWithLatitude:31.221 longitude:119.508619];
+    
+    //第二个坐标
+    
+    CLLocation *before=[[CLLocation alloc] initWithLatitude:32.206340 longitude:119.425600];
+    
+    //计算距离
+    
+    CLLocationDistance meters=[current distanceFromLocation:before];
+    
+    
     NSURL *url = dict[@"hotel_img"];
     [cell.imageview sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon"]];
     cell.nameLabel.text = dict[@"hotel_name"];
@@ -527,7 +544,8 @@
         [_avi stopAnimating];
         [Utilities popUpAlertViewWithMsg:@"请正确设置开始日期和结束日期" andTitle:@"提示" onView:self];
     }else{
-        NSDictionary *para = @{@"pageNum":@(page),@"pageSize":@(perPage),@"inTime":@(startTime),@"outTime":@(endTime),@"sortingId":brr,@"startId":@(ar),@"priceId":@(arryer)};
+        
+       /* NSDictionary *para = @{@"pageNum":@(page),@"pageSize":@(perPage),@"inTime":@(startTime),@"outTime":@(endTime),@"sortingId":brr,@"startId":@(ar),@"priceId":@(arryer)};
         NSLog(@"page = %ld  perPage = %ld  startTime = %f  endTime = %f  ar = %ld  brr = %@ priceId = %ld",(long)page,(long)perPage,startTime,endTime,(long)ar,brr,(long)arryer);
         
         NSString *urlstring=@"https://gethotels.fisheep.com.cn/hotel/findHotelByCity_edu";
@@ -539,14 +557,22 @@
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"请求失败");
+        }];*/
+        
+        /*NSDictionary *para = @{@"pageNum":@1,@"pageSize":@10,@"inTime":intime,@"outTime":outtime,@"sortingId":brr,@"startId":@(ar),@"priceId":@(arryer)};*/
+        NSDictionary * para =[NSDictionary new];
+        [RequestAPI requestURL:@"/hotel/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+            NSLog(@"responseObject=%@",responseObject);
+            
+        } failure:^(NSInteger statusCode, NSError *error) {
+            NSLog(@"statusCode=%ld",statusCode);
         }];
-        
-        
            }
 }
 - (void)networkRequest{
     NSString *urlstring=@"https://gethotels.fisheep.com.cn/findHotelById";
-    NSDictionary *param=@{@"id": _idSearchBar.text};
+    int y =(arc4random() % 20)+1;
+    NSDictionary *param=@{@"id":@(y)};
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
     manger.responseSerializer=[AFHTTPResponseSerializer serializer];
     [manger GET:urlstring parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -554,7 +580,7 @@
         NSDictionary *result = dict[@"content"];
         //NSLog(@"%@",result);
         [_arr addObject:result];
-        //NSLog(@"_arr = %@",_arr);
+        NSLog(@"_arr = %@",_arr);
         //刷新表格
         [_gethotelView reloadData];
 
