@@ -44,24 +44,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sequenBtn;
 - (IBAction)sequenBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIView *sequenView;
-@property (weak, nonatomic) IBOutlet UIButton *allbtn;
-- (IBAction)allbtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *fourbtn;
-- (IBAction)fourbtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *fivebtn;
-- (IBAction)fivebtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *nobtn;
-- (IBAction)nobtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *threehundrebtn;
-- (IBAction)threehundredbtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *fivehundred;
-- (IBAction)fivehundred:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *tenhundred;
-- (IBAction)tenhundred:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *livedate;
 @property (weak, nonatomic) IBOutlet UIButton *leavedate;
-@property (weak, nonatomic) IBOutlet UIButton *tenuphundred;
-- (IBAction)tenhundredbtn:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)livedateBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)leavedateBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)confirmBtn:(UIBarButtonItem *)sender;
@@ -69,7 +53,6 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIView *dateView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbarView;
-- (IBAction)BossBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *paixu;
 - (IBAction)paixu:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *lowtohight;
@@ -361,6 +344,54 @@
     }
 }
 
+- (IBAction)paixu:(UIButton *)sender forEvent:(UIEvent *)event {
+    _lowtohight.selected = NO;
+    _highttolow.selected = NO;
+    _neartofar.selected = NO;
+    if (_paixu.selected == NO) {
+        _paixu.selected = YES;
+    }
+}
+//入住时间
+- (IBAction)livedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 0;
+    _datePicker.hidden = NO;
+    _dateView.hidden = NO;
+    _toolbarView.hidden = NO;
+}
+
+- (IBAction)leavedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 1;
+    _datePicker.hidden = NO;
+    _dateView.hidden = NO;
+    _toolbarView.hidden = NO;
+}
+
+- (IBAction)lowtohight:(UIButton *)sender forEvent:(UIEvent *)event {
+    _paixu.selected = NO;
+    _highttolow.selected = NO;
+    _neartofar.selected = NO;
+    if (_lowtohight.selected == NO) {
+        _lowtohight.selected = YES;
+    }
+}
+
+- (IBAction)hightTolow:(UIButton *)sender forEvent:(UIEvent *)event {
+    _paixu.selected = NO;
+    _lowtohight.selected = NO;
+    _neartofar.selected = NO;
+    if (_highttolow.selected == NO) {
+        _highttolow.selected = YES;
+    }
+}
+- (IBAction)neartofar:(UIButton *)sender forEvent:(UIEvent *)event {
+    _paixu.selected = NO;
+    _lowtohight.selected = NO;
+    _highttolow.selected = NO;
+    if (_neartofar.selected == NO) {
+        _neartofar.selected = YES;
+    }
+}
 //智能排序
 - (IBAction)screenBtn:(UIButton *)sender forEvent:(UIEvent *)event {
     self.sequenView.hidden = YES;
@@ -383,102 +414,8 @@
         [_sequenBtn setTitleColor:[UIColor blueColor]forState:UIControlStateNormal];
     }
 }
-//全部
-- (IBAction)allbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _fourbtn.selected = NO;
-    _fivebtn.selected = NO;
-    if (_allbtn.selected == NO) {
-        _allbtn.selected = YES;
-    }
-    
-}
-//四星
-- (IBAction)fourbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-     _allbtn.selected = NO;
-    _fivebtn.selected = NO;
-    if (_fourbtn.selected == NO) {
-        _fourbtn.selected = YES;
-    }
-    
-}
-//五星
-- (IBAction)fivebtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _fourbtn.selected = NO;
-     _allbtn.selected = NO;
-    if (_fivebtn.selected == NO) {
-        _fivebtn.selected = YES;
-    }
    
-}
-//不限
-- (IBAction)nobtn:(UIButton *)sender forEvent:(UIEvent *)event {
-     _threehundrebtn.selected = NO;
-    _fivehundred.selected = NO;
-    _tenhundred.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_nobtn.selected == NO) {
-        _nobtn.selected = YES;
-    }
-  
-}
-//300以下
-- (IBAction)threehundredbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _fivehundred.selected = NO;
-    _tenhundred.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_threehundrebtn.selected == NO) {
-        _threehundrebtn.selected = YES;
-    }
-   
-}
-//300-500
-- (IBAction)fivehundred:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _tenhundred.selected = NO;
-     _threehundrebtn.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_fivehundred.selected == NO) {
-        _fivehundred.selected = YES;
-    }
-   
-}
-//500-1000
-- (IBAction)tenhundred:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _fivehundred.selected = NO;
-     _threehundrebtn.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_tenhundred.selected == NO) {
-        _tenhundred.selected = YES;
-    }
- 
-}
-//1000以上
-- (IBAction)tenhundredbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _fivehundred.selected = NO;
-     _threehundrebtn.selected = NO;
-    _tenhundred.selected = NO;
-    if (_tenuphundred.selected == NO) {
-        _tenuphundred.selected = YES;
-    }
-    
-}
-//入住时间
-- (IBAction)livedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag = 0;
-    _datePicker.hidden = NO;
-    _dateView.hidden = NO;
-    _toolbarView.hidden = NO;
-}
 
-- (IBAction)leavedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag = 1;
-    _datePicker.hidden = NO;
-    _dateView.hidden = NO;
-     _toolbarView.hidden = NO;
-}
 //确认按钮
 - (IBAction)confirmBtn:(UIBarButtonItem *)sender {
     NSDate *date = _datePicker.date;
@@ -507,72 +444,11 @@
     _toolbarView.hidden = YES;
     _dateView.hidden = YES;
 }
-- (IBAction)BossBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    if (_allbtn.selected == YES) {
-        ar = 1;
-    }else if (_fourbtn.selected == YES){
-        ar = 2;
-    }else if (_fivebtn.selected == YES){
-        ar = 3;
-    }
-    if (_paixu.selected == YES) {
-        brr = @"1";
-    }else if (_lowtohight.selected == YES){
-        brr = @"2";
-    }else if (_highttolow.selected == YES){
-        brr = @"3";
-    }else if (_neartofar.selected == YES){
-        brr = @"4";
-    }
-    if (_nobtn.selected == YES) {
-        arryer = 1;
-    }else if (_threehundrebtn.selected == YES){
-        arryer = 2;
-    }else if (_fivehundred.selected == YES){
-        arryer = 3;
-    }else if (_tenhundred.selected == YES){
-        arryer = 4;
-    }else if (_tenuphundred.selected == YES){
-        arryer = 5;
-    }
-    //开始日期
-    NSTimeInterval startTime = [Utilities cTimestampFromString:_livedate.titleLabel.text format:@"yyyy-MM-dd"];
-    //结束日期
-    NSTimeInterval endTime = [Utilities cTimestampFromString:_leavedate.titleLabel.text format:@"yyyy-MM-dd"];
-    
-    if (startTime >= endTime) {
-        [_avi stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"请正确设置开始日期和结束日期" andTitle:@"提示" onView:self];
-    }else{
-        
-       /* NSDictionary *para = @{@"pageNum":@(page),@"pageSize":@(perPage),@"inTime":@(startTime),@"outTime":@(endTime),@"sortingId":brr,@"startId":@(ar),@"priceId":@(arryer)};
-        NSLog(@"page = %ld  perPage = %ld  startTime = %f  endTime = %f  ar = %ld  brr = %@ priceId = %ld",(long)page,(long)perPage,startTime,endTime,(long)ar,brr,(long)arryer);
-        
-        NSString *urlstring=@"https://gethotels.fisheep.com.cn/hotel/findHotelByCity_edu";
-        AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-        manger.responseSerializer=[AFHTTPResponseSerializer serializer];
-        [manger GET:urlstring parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-            NSLog(@"dict = %@",dict);
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"请求失败");
-        }];*/
-        
-        /*NSDictionary *para = @{@"pageNum":@1,@"pageSize":@10,@"inTime":intime,@"outTime":outtime,@"sortingId":brr,@"startId":@(ar),@"priceId":@(arryer)};*/
-        NSDictionary * para =[NSDictionary new];
-        [RequestAPI requestURL:@"/hotel/findHotelByCity_edu" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
-            NSLog(@"responseObject=%@",responseObject);
-            
-        } failure:^(NSInteger statusCode, NSError *error) {
-            NSLog(@"statusCode=%ld",statusCode);
-        }];
-           }
-}
+
 - (void)networkRequest{
     NSString *urlstring=@"https://gethotels.fisheep.com.cn/findHotelById";
-    int y =(arc4random() % 20)+1;
-    NSDictionary *param=@{@"id":@(y)};
+    //int y =(arc4random() % 20)+1;
+    NSDictionary *param=@{@"id":_idSearchBar.text};
     AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
     manger.responseSerializer=[AFHTTPResponseSerializer serializer];
     [manger GET:urlstring parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -589,37 +465,4 @@
     }];
 }
 
-- (IBAction)paixu:(UIButton *)sender forEvent:(UIEvent *)event {
-    _lowtohight.selected = NO;
-    _highttolow.selected = NO;
-    _neartofar.selected = NO;
-    if (_paixu.selected == NO) {
-        _paixu.selected = YES;
-    }
-}
-- (IBAction)lowtohight:(UIButton *)sender forEvent:(UIEvent *)event {
-    _paixu.selected = NO;
-    _highttolow.selected = NO;
-    _neartofar.selected = NO;
-    if (_lowtohight.selected == NO) {
-        _lowtohight.selected = YES;
-    }
-}
-
-- (IBAction)hightTolow:(UIButton *)sender forEvent:(UIEvent *)event {
-    _paixu.selected = NO;
-    _lowtohight.selected = NO;
-    _neartofar.selected = NO;
-    if (_highttolow.selected == NO) {
-        _highttolow.selected = YES;
-    }
-}
-- (IBAction)neartofar:(UIButton *)sender forEvent:(UIEvent *)event {
-    _paixu.selected = NO;
-    _lowtohight.selected = NO;
-    _highttolow.selected = NO;
-    if (_neartofar.selected == NO) {
-        _neartofar.selected = YES;
-    }
-}
 @end
