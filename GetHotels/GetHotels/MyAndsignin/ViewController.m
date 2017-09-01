@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLbl;
+@property (weak, nonatomic) IBOutlet UIButton *starBtn;
+- (IBAction)starAction:(UIButton *)sender forEvent:(UIEvent *)event;
+
 @end
 
 @implementation ViewController
@@ -84,4 +87,13 @@
 ////    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 ////    [self performSegueWithIdentifier:@"myInfoToSafety" send er:self];
 //}
+- (IBAction)starAction:(UIButton *)sender forEvent:(UIEvent *)event {
+    if ([Utilities loginCheck]) {
+        //已登陆
+        
+        _starBtn.hidden = NO;
+        
+    }
+
+}
 @end
