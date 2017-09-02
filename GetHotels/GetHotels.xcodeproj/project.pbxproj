@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		5F6CB02A703CF8002743702C /* libPods-GetHotels.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BE28BF9A1FA9D700B0B9F2 /* libPods-GetHotels.a */; };
+		840298D71F5A62F70082DC35 /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 840298D61F5A62F70082DC35 /* Second.storyboard */; };
+		840298E11F5A641A0082DC35 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 840298DA1F5A641A0082DC35 /* Annotation.m */; };
+		840298E21F5A641A0082DC35 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840298DC1F5A641A0082DC35 /* MapViewController.m */; };
+		840298E31F5A641A0082DC35 /* PurchaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840298DE1F5A641A0082DC35 /* PurchaseTableViewController.m */; };
+		840298E41F5A641A0082DC35 /* reserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840298E01F5A641A0082DC35 /* reserViewController.m */; };
+		840298E71F5A644C0082DC35 /* GethotelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840298E61F5A644C0082DC35 /* GethotelModel.m */; };
 		84562CAA1F57DD6C007B95DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84562CA91F57DD6C007B95DA /* main.m */; };
 		84562CAD1F57DD6C007B95DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 84562CAC1F57DD6C007B95DA /* AppDelegate.m */; };
 		84562CB31F57DD6C007B95DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84562CB11F57DD6C007B95DA /* Main.storyboard */; };
@@ -53,7 +59,6 @@
 		84562D551F57DF98007B95DA /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84562D501F57DF98007B95DA /* libcrypto.a */; };
 		84562D561F57DF98007B95DA /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84562D511F57DF98007B95DA /* libssl.a */; };
 		84562D571F57DF98007B95DA /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84562D521F57DF98007B95DA /* Openssl.framework */; };
-		84562D591F57E112007B95DA /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84562D581F57E112007B95DA /* Second.storyboard */; };
 		84562D5B1F57E133007B95DA /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84562D5A1F57E133007B95DA /* Third.storyboard */; };
 		84562D5D1F57E14E007B95DA /* Four.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84562D5C1F57E14E007B95DA /* Four.storyboard */; };
 		8461102C1F5A513E00DD9CDD /* MyhotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846110231F5A513E00DD9CDD /* MyhotelViewController.m */; };
@@ -91,6 +96,17 @@
 /* Begin PBXFileReference section */
 		54BE4D7EF5AF33920B1855F9 /* Pods-GetHotels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotels/Pods-GetHotels.debug.xcconfig"; sourceTree = "<group>"; };
 		6684E2F0351D5687E763D75F /* Pods-GetHotels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetHotels.release.xcconfig"; path = "Pods/Target Support Files/Pods-GetHotels/Pods-GetHotels.release.xcconfig"; sourceTree = "<group>"; };
+		840298D61F5A62F70082DC35 /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
+		840298D91F5A641A0082DC35 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		840298DA1F5A641A0082DC35 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
+		840298DB1F5A641A0082DC35 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		840298DC1F5A641A0082DC35 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		840298DD1F5A641A0082DC35 /* PurchaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseTableViewController.h; sourceTree = "<group>"; };
+		840298DE1F5A641A0082DC35 /* PurchaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseTableViewController.m; sourceTree = "<group>"; };
+		840298DF1F5A641A0082DC35 /* reserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reserViewController.h; sourceTree = "<group>"; };
+		840298E01F5A641A0082DC35 /* reserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = reserViewController.m; sourceTree = "<group>"; };
+		840298E51F5A644C0082DC35 /* GethotelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GethotelModel.h; sourceTree = "<group>"; };
+		840298E61F5A644C0082DC35 /* GethotelModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GethotelModel.m; sourceTree = "<group>"; };
 		84562CA51F57DD6C007B95DA /* GetHotels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHotels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84562CA91F57DD6C007B95DA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84562CAB1F57DD6C007B95DA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -175,7 +191,6 @@
 		84562D501F57DF98007B95DA /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = GetHotels/libcrypto.a; sourceTree = "<group>"; };
 		84562D511F57DF98007B95DA /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = GetHotels/libssl.a; sourceTree = "<group>"; };
 		84562D521F57DF98007B95DA /* Openssl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Openssl.framework; path = GetHotels/Openssl.framework; sourceTree = "<group>"; };
-		84562D581F57E112007B95DA /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		84562D5A1F57E133007B95DA /* Third.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		84562D5C1F57E14E007B95DA /* Four.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Four.storyboard; sourceTree = "<group>"; };
 		846110221F5A513E00DD9CDD /* MyhotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyhotelViewController.h; sourceTree = "<group>"; };
@@ -248,6 +263,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		840298D81F5A641A0082DC35 /* Contlroler */ = {
+			isa = PBXGroup;
+			children = (
+				840298D91F5A641A0082DC35 /* Annotation.h */,
+				840298DA1F5A641A0082DC35 /* Annotation.m */,
+				840298DB1F5A641A0082DC35 /* MapViewController.h */,
+				840298DC1F5A641A0082DC35 /* MapViewController.m */,
+				840298DD1F5A641A0082DC35 /* PurchaseTableViewController.h */,
+				840298DE1F5A641A0082DC35 /* PurchaseTableViewController.m */,
+				840298DF1F5A641A0082DC35 /* reserViewController.h */,
+				840298E01F5A641A0082DC35 /* reserViewController.m */,
+			);
+			path = Contlroler;
+			sourceTree = "<group>";
+		};
 		84562C9C1F57DD6C007B95DA = {
 			isa = PBXGroup;
 			children = (
@@ -275,10 +305,10 @@
 			children = (
 				84562CDE1F57DE6E007B95DA /* 3rd */,
 				84562CF21F57DE6E007B95DA /* Constant */,
-				84562CF41F57DE6E007B95DA /* Controller */,
 				846110211F5A513E00DD9CDD /* MyAndsignin */,
-				84562CF51F57DE6E007B95DA /* Model */,
 				84562CFA1F57DE6E007B95DA /* Utility */,
+				84562CF51F57DE6E007B95DA /* Model */,
+				840298D81F5A641A0082DC35 /* Contlroler */,
 				B22B458A1F57FE3100F3DE8A /* main */,
 				84562D271F57DE6E007B95DA /* View */,
 				84562CA81F57DD6C007B95DA /* Supporting Files */,
@@ -377,6 +407,8 @@
 			isa = PBXGroup;
 			children = (
 				84562CB41F57DD6C007B95DA /* GetHotels.xcdatamodeld */,
+				840298E51F5A644C0082DC35 /* GethotelModel.h */,
+				840298E61F5A644C0082DC35 /* GethotelModel.m */,
 				84562CF61F57DE6E007B95DA /* HotelModel.h */,
 				84562CF71F57DE6E007B95DA /* HotelModel.m */,
 				84562CF81F57DE6E007B95DA /* Order.h */,
@@ -454,7 +486,7 @@
 			isa = PBXGroup;
 			children = (
 				84562CB11F57DD6C007B95DA /* Main.storyboard */,
-				84562D581F57E112007B95DA /* Second.storyboard */,
+				840298D61F5A62F70082DC35 /* Second.storyboard */,
 				84562D5A1F57E133007B95DA /* Third.storyboard */,
 				84562D5C1F57E14E007B95DA /* Four.storyboard */,
 				84562CB91F57DD6D007B95DA /* LaunchScreen.storyboard */,
@@ -625,9 +657,9 @@
 			files = (
 				B22B459D1F58005300F3DE8A /* Info.plist in Resources */,
 				B22B459B1F57FFEF00F3DE8A /* Cities.plist in Resources */,
-				84562D591F57E112007B95DA /* Second.storyboard in Resources */,
 				84562CBB1F57DD6D007B95DA /* LaunchScreen.storyboard in Resources */,
 				84562CB81F57DD6D007B95DA /* Assets.xcassets in Resources */,
+				840298D71F5A62F70082DC35 /* Second.storyboard in Resources */,
 				84562CB31F57DD6C007B95DA /* Main.storyboard in Resources */,
 				84562D5D1F57E14E007B95DA /* Four.storyboard in Resources */,
 				84562D5B1F57E133007B95DA /* Third.storyboard in Resources */,
@@ -710,17 +742,21 @@
 				84562D371F57DE6E007B95DA /* NSDataEx.m in Sources */,
 				84562D361F57DE6E007B95DA /* MD5DataSigner.m in Sources */,
 				84562D411F57DE6E007B95DA /* NSString+Crypt.m in Sources */,
+				840298E71F5A644C0082DC35 /* GethotelModel.m in Sources */,
 				84562D2A1F57DE6E007B95DA /* TAAnimatedDotView.m in Sources */,
 				84562D3F1F57DE6E007B95DA /* NSDate+Utility.m in Sources */,
 				84562D291F57DE6E007B95DA /* TAAbstractDotView.m in Sources */,
+				840298E31F5A641A0082DC35 /* PurchaseTableViewController.m in Sources */,
 				84562D2D1F57DE6E007B95DA /* SDCollectionViewCell.m in Sources */,
 				84562D391F57DE6E007B95DA /* RSADataSigner.m in Sources */,
+				840298E21F5A641A0082DC35 /* MapViewController.m in Sources */,
 				84562D311F57DE6E007B95DA /* Order.m in Sources */,
 				84562D3A1F57DE6E007B95DA /* RSADataVerifier.m in Sources */,
 				84562D281F57DE6E007B95DA /* BasicEncodingRules.m in Sources */,
 				84562D301F57DE6E007B95DA /* HotelModel.m in Sources */,
 				84562D341F57DE6E007B95DA /* DataSigner.m in Sources */,
 				846B26241F57ED8E00F4876B /* UserModel.m in Sources */,
+				840298E11F5A641A0082DC35 /* Annotation.m in Sources */,
 				84562D321F57DE6E007B95DA /* GBAlipayManager.m in Sources */,
 				84562D421F57DE6E007B95DA /* RequestAPI.m in Sources */,
 				84562D401F57DE6E007B95DA /* NSDateFormatter+Category.m in Sources */,
@@ -740,6 +776,7 @@
 				8461102E1F5A513E00DD9CDD /* SigninViewController.m in Sources */,
 				84562CAD1F57DD6C007B95DA /* AppDelegate.m in Sources */,
 				8461102D1F5A513E00DD9CDD /* MyTableViewCell.m in Sources */,
+				840298E41F5A641A0082DC35 /* reserViewController.m in Sources */,
 				846110301F5A513E00DD9CDD /* ViewController.m in Sources */,
 				84562CAA1F57DD6C007B95DA /* main.m in Sources */,
 				84562D451F57DE6E007B95DA /* Utilities.m in Sources */,
