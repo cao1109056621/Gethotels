@@ -12,7 +12,7 @@
 #import "SDCycleScrollView.h"
 #import <CoreLocation/CoreLocation.h>
 #import "hotelModel.h"
-
+#import "reserViewController.h"
 @interface HotelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,SDCycleScrollViewDelegate,UITextFieldDelegate>{
     NSInteger flag;
     NSInteger pagenum;
@@ -177,7 +177,17 @@
         //取消选中
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         //1、获得要跳转的页面的实例
-        IssueViewController *issueVC = [Utilities getStoryboardInstance:@"Second" byIdentity:@"Second"];
+        reserViewController *issueVC = [Utilities getStoryboardInstance:@"Second" byIdentity:@"Second"];
+        
+        //当从列表页到详情页的这个跳转要发生的时候
+        //1、获取要传递到下一页去的数据
+        NSIndexPath *indexPath = [_gethotelView indexPathForSelectedRow];
+        HotelModel *activity = _arr[indexPath.row];
+        //2、获取下一页这个实例
+        
+        //3、把数据给下一页预备好的接受容器
+        issueVC.hotel.hotelId =activity.hotelId;
+
         UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:issueVC];
         //2、用某种方式跳转到上述页面（这里用Model的方式跳转）
             [self presentViewController:nc animated:YES completion:nil];
@@ -186,10 +196,10 @@
         
     }
 }
-//当某一个页面跳转行为将要发生的时候
+/*//当某一个页面跳转行为将要发生的时候
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"firstTOsecond"]) {
-      /*  //当从列表页到详情页的这个跳转要发生的时候
+        //当从列表页到详情页的这个跳转要发生的时候
         //1、获取要传递到下一页去的数据
         NSIndexPath *indexPath = [_gethotelView indexPathForSelectedRow];
         HotelModel *activity = _arr[indexPath.row];
@@ -197,10 +207,10 @@
         DetailViewController *detailVC = segue.destinationViewController;
         //3、把数据给下一页预备好的接受容器
         detailVC.activity = activity;
-       */
+       
     }
 }
-
+*/
 
 
 //每次离开了这个页面的时候
