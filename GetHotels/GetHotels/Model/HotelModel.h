@@ -17,5 +17,13 @@
 @property (strong,nonatomic) NSString *businessId;
 @property (strong,nonatomic) NSString *nickname;
 @property (strong,nonatomic) NSString *memberId;
+@property (strong,nonatomic) NSString *phone;
+@property (strong,nonatomic) NSString *avatarUrl;
+@property (strong,nonatomic) NSString *latitude;
+@property (strong,nonatomic) NSString *longitude;
+@property (strong,nonatomic) NSString *htadd;
+@property (strong,nonatomic) NSString *htname;
+@property (nonatomic) NSInteger htprice;
+
 -(instancetype)initWithDictionary:(NSDictionary *)dict;
 @end
