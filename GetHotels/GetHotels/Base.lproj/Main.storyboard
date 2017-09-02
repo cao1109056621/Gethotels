@@ -93,7 +93,11 @@
                                             <outlet property="nameLabel" destination="Qc0-O6-HAe" id="ds3-kp-UE2"/>
                                             <outlet property="placeLabel" destination="3BQ-hW-IdQ" id="ZEp-Ul-Hkg"/>
                                             <outlet property="priceLabel" destination="hWP-aB-FN6" id="ytH-RX-I5m"/>
+<<<<<<< HEAD
+                                            <segue destination="bqn-vJ-r6Y" kind="show" id="ib8-U4-0oj"/>
+=======
                                             <segue destination="bqn-vJ-r6Y" kind="show" id="AWk-kY-132"/>
+>>>>>>> f143847ddc4159fb9a66f80d1f819a7803c15c15
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
