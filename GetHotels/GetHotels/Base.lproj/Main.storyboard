@@ -474,7 +474,7 @@
                     <connections>
                         <segue destination="QTs-y6-LSY" kind="relationship" relationship="viewControllers" id="oRx-Gl-qRw"/>
                         <segue destination="6Av-o2-MBC" kind="relationship" relationship="viewControllers" id="FDF-6N-u0v"/>
-                        <segue destination="Inh-Kn-Hon" kind="relationship" relationship="viewControllers" id="iz1-hz-Fql"/>
+                        <segue destination="BGB-cP-gdE" kind="relationship" relationship="viewControllers" id="8me-La-iIF"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e37-zF-jUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -592,33 +592,15 @@
             </objects>
             <point key="canvasLocation" x="2490" y="-189"/>
         </scene>
-        <!--我的-->
-        <scene sceneID="ocQ-nP-QmG">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Inh-Kn-Hon" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="my" id="hrU-f3-arv"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="X4X-Yy-udP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.16726994510000001" green="0.54823535680000002" blue="0.94219803810000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="BGB-cP-gdE" kind="show" id="1ug-sM-71l"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jV7-nn-PWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="140" y="989"/>
-        </scene>
         <!--Third-->
         <scene sceneID="NBy-ob-EQg">
             <objects>
-                <viewControllerPlaceholder storyboardName="Third" id="BGB-cP-gdE" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Third" id="BGB-cP-gdE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="rJZ-xl-UvV"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVQ-bZ-YVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973" y="1198"/>
+            <point key="canvasLocation" x="-175" y="870"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Flo-RS-vzI">
@@ -665,7 +647,6 @@
     <resources>
         <image name="fly" width="20" height="20"/>
         <image name="hotel" width="22" height="21"/>
-        <image name="my" width="20" height="22"/>
         <image name="rain" width="349" height="350"/>
     </resources>
 </document>
