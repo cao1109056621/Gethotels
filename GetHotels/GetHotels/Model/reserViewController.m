@@ -65,7 +65,6 @@
     // Do any additional setup after loading the view.
     [self custom];
     [self readyForEncoding];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,8 +80,8 @@
     NSArray *imageNames = @[@"reser1",@"reser2",@"reser3",@"reser4"];
     
     // 网络加载 --- 创建带标题的图片轮播器
+  
     SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, -64, UI_SCREEN_W, 150) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
-    
     cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     //cycleScrollView2.titlesGroup = titles;
     cycleScrollView2.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
