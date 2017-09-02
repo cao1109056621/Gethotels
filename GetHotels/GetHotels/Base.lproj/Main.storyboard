@@ -85,6 +85,7 @@
                                             <outlet property="nameLabel" destination="Qc0-O6-HAe" id="ds3-kp-UE2"/>
                                             <outlet property="placeLabel" destination="3BQ-hW-IdQ" id="ZEp-Ul-Hkg"/>
                                             <outlet property="priceLabel" destination="hWP-aB-FN6" id="ytH-RX-I5m"/>
+                                            <segue destination="a1F-a4-9BW" kind="show" id="XxQ-99-Uu8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -566,6 +567,14 @@
             </objects>
             <point key="canvasLocation" x="3430" y="-189"/>
         </scene>
+        <!--Second-->
+        <scene sceneID="McG-yd-Lop">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Second" id="a1F-a4-9BW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JE8-NJ-Ksp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3275" y="519"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="lY1-Si-0PQ">
             <objects>
@@ -596,10 +605,21 @@
                         <color key="barTintColor" red="0.16726994510000001" green="0.54823535680000002" blue="0.94219803810000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BGB-cP-gdE" kind="show" id="1ug-sM-71l"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jV7-nn-PWK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="989"/>
+        </scene>
+        <!--Third-->
+        <scene sceneID="NBy-ob-EQg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Third" id="BGB-cP-gdE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVQ-bZ-YVB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="1198"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Flo-RS-vzI">
@@ -647,6 +667,6 @@
         <image name="fly" width="20" height="20"/>
         <image name="hotel" width="22" height="21"/>
         <image name="my" width="20" height="22"/>
-        <image name="rain" width="699" height="701"/>
+        <image name="rain" width="349" height="350"/>
     </resources>
 </document>
