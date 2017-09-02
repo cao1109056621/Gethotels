@@ -40,13 +40,13 @@
         _loginBtn.hidden = YES;
         _usernameLbl.hidden = NO;
         UserModel *user = [[StorageMgr singletonStorageMgr]objectForKey:@"MemberInfo"];
-        [_avatrImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"555"]];
+        [_avatrImage sd_setImageWithURL:[NSURL URLWithString:user.avatarUrl] placeholderImage:[UIImage imageNamed:@"icon"]];
         _usernameLbl.text = user.nickname;
     }else{
         //未登陆
         _loginBtn.hidden = NO;
         _usernameLbl.hidden = YES;
-        _avatrImage.image = [UIImage imageNamed:@"icon"];
+        _avatrImage.image = [UIImage imageNamed:@"555"];
         _usernameLbl.text = @"未登陆";
     }
     
