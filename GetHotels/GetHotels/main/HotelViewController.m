@@ -12,6 +12,7 @@
 #import "SDCycleScrollView.h"
 #import <CoreLocation/CoreLocation.h>
 #import "hotelModel.h"
+
 @interface HotelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,SDCycleScrollViewDelegate,UITextFieldDelegate>{
     NSInteger flag;
     NSInteger pagenum;
@@ -175,6 +176,14 @@
     if ([tableView isEqual:_gethotelView]) {
         //取消选中
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        //1、获得要跳转的页面的实例
+        IssueViewController *issueVC = [Utilities getStoryboardInstance:@"Second" byIdentity:@"Second"];
+        UINavigationController *nc = [[UINavigationController alloc]initWithRootViewController:issueVC];
+        //2、用某种方式跳转到上述页面（这里用Model的方式跳转）
+            [self presentViewController:nc animated:YES completion:nil];
+        //（这里用Push的方式跳转）
+        //[self.navigationController pushViewController:searchVC animated:YES];
+        
     }
 }
 //当某一个页面跳转行为将要发生的时候
@@ -191,6 +200,8 @@
        */
     }
 }
+
+
 
 //每次离开了这个页面的时候
 -( void)viewDidDisappear:(BOOL)animated{
