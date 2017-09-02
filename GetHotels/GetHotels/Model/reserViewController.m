@@ -65,12 +65,23 @@
     // Do any additional setup after loading the view.
     [self custom];
     [self readyForEncoding];
+    [self naviConfig];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)naviConfig{
+    //设置导航条标题文字
+    self.navigationItem.title = @"入住酒店支付";
+    //为导航条左上角创建一个按钮
+    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(beckAction)];
+    self.navigationItem.leftBarButtonItem = left;
+}
+
 - (void)custom{
     
     UIScrollView *demoContainerView = [[UIScrollView alloc] initWithFrame:self.view.frame];
@@ -131,18 +142,19 @@
      _finessLbl.text =_hotel.faci[5];
      _dinnerLbl.text =_hotel.faci[6];
      _wakeLbl.text =_hotel.faci[7];*/
-    
-    
-    
-    
-    /*@property (weak, nonatomic) IBOutlet UILabel *stopcarLbl;
-     @property (weak, nonatomic) IBOutlet UILabel *washLbl;
-     @property (weak, nonatomic) IBOutlet UILabel *wifiLbl;
-     @property (weak, nonatomic) IBOutlet UILabel *pickLbl;
-     @property (weak, nonatomic) IBOutlet UILabel *luggLbl;
-     @property (weak, nonatomic) IBOutlet UILabel *finessLbl;
-     @property (weak, nonatomic) IBOutlet UILabel *dinnerLbl;
-     @property (weak, nonatomic) IBOutlet UILabel *wakeLbl;*/
+    NSArray *array = _hotel.faci;
+    for (int i = 0 ; i < array.count; i++) {
+        if(i == 0){ _stopcarLbl.text = array[0];}
+        if(i == 1){ _washLbl.text = array[1];}
+        if(i == 2){ _wifiLbl.text = array[2];}
+        if(i == 3){ _pickLbl.text = array[3];}
+        if(i == 4){ _luggLbl.text = array[4];}
+        if(i == 5){ _finessLbl.text = array[5];}
+        if(i == 6){ _dinnerLbl.text = array[6];}
+        if(i == 7){ _wakeLbl.text = array[7];}
+
+    }
+
     //房间设施
     _size.text = _hotel.type[3];
     _Bigbed.text = _hotel.type[2];
@@ -260,6 +272,10 @@
  
  
  */
+-(void)beckAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
+}
 
 - (IBAction)startDateAction:(UIButton *)sender forEvent:(UIEvent *)event {
     flag = 0;
