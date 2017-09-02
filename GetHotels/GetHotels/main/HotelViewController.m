@@ -11,14 +11,11 @@
 #import "UIImageView+WebCache.h"
 #import "SDCycleScrollView.h"
 #import <CoreLocation/CoreLocation.h>
-#import "HotelModel.h"
+#import "hotelModel.h"
 @interface HotelViewController ()<UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate,SDCycleScrollViewDelegate,UITextFieldDelegate>{
     NSInteger flag;
-    NSInteger ar;
-    NSString *brr;
-    NSInteger arryer;
-    NSInteger page;
-    NSInteger perPage;
+    NSInteger pagenum;
+    NSInteger pagesize;
     BOOL firstVisit;
     BOOL isLoading;
     NSTimeInterval followUpTime;
@@ -42,24 +39,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *sequenBtn;
 - (IBAction)sequenBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIView *sequenView;
-@property (weak, nonatomic) IBOutlet UIButton *allbtn;
-- (IBAction)allbtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *fourbtn;
-- (IBAction)fourbtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *fivebtn;
-- (IBAction)fivebtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *nobtn;
-- (IBAction)nobtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *threehundrebtn;
-- (IBAction)threehundredbtn:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *fivehundred;
-- (IBAction)fivehundred:(UIButton *)sender forEvent:(UIEvent *)event;
-@property (weak, nonatomic) IBOutlet UIButton *tenhundred;
-- (IBAction)tenhundred:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *livedate;
 @property (weak, nonatomic) IBOutlet UIButton *leavedate;
-@property (weak, nonatomic) IBOutlet UIButton *tenuphundred;
-- (IBAction)tenhundredbtn:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)livedateBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)leavedateBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 - (IBAction)confirmBtn:(UIBarButtonItem *)sender;
@@ -67,7 +48,6 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIView *dateView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbarView;
-- (IBAction)BossBtn:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *paixu;
 - (IBAction)paixu:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UIButton *lowtohight;
@@ -76,7 +56,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *highttolow;
 @property (weak, nonatomic) IBOutlet UIButton *neartofar;
 - (IBAction)neartofar:(UIButton *)sender forEvent:(UIEvent *)event;
-
+@property (nonatomic) NSTimeInterval inTime;
+@property (nonatomic) NSTimeInterval outTime;
 
 
 
@@ -89,19 +70,19 @@
     [super awakeFromNib];
 }
 - (void)viewDidLoad {
-
     [super viewDidLoad];
     [self locaionConfig];
+    [self mainnetworRequest];
     [self dataInitialize];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkCityState:) name:@"ResetHome" object:nil];
     _idSearchBar.returnKeyType = UIReturnKeySearch;//变为发送按钮
     _idSearchBar.delegate = self;//设置代理
-    perPage=10;
-    page=1;
+
    
-    _arry = @[@"img_01",@"img_02",@"img_03",@"img_04"];
+    _arry = @[@"image01",@"image02",@"image03",@"image04",@"image05"];
     self.bannerView.imageURLStringsGroup = _arry;
     self.bannerView.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
+    self.bannerView.autoScrollTimeInterval = 3;
     self.bannerView.delegate = self;
     self.bannerView.currentPageDotColor = [UIColor whiteColor]; // 自定义分页控件小圆标颜色
   
@@ -135,12 +116,28 @@
 //细胞长什么样
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     HotelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hotelcell" forIndexPath:indexPath];
-    NSDictionary *dict = _arr[indexPath.row];
-    NSURL *url = dict[@"hotel_img"];
-    [cell.imageview sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"icon"]];
-    cell.nameLabel.text = dict[@"hotel_name"];
-    cell.placeLabel.text = dict[@"hotel_address"];
-    cell.priceLabel.text = [NSString stringWithFormat:@"¥ %@ 元", dict[@"now_price"]];
+    
+    //根据当前正在渲染的细胞的行号，从对应的数组中拿到这一行所匹配的活动字典
+    HotelModel*htmodel = _arr[indexPath.row];
+    
+    //将纬度转化为double型
+    NSString *aString = htmodel.latitude;
+    double aNumber = [aString doubleValue];
+    //将经度转化为double型
+    NSString *bString = htmodel.longitude;
+    double bNumber = [bString doubleValue];
+    CLLocation *lastLocation = [[CLLocation alloc] initWithLatitude:aNumber longitude:bNumber];
+    CLLocation *nowLocation = [[CLLocation alloc] initWithLatitude:_location.coordinate.latitude longitude:_location.coordinate.longitude];
+    
+    int distanceMeters = [lastLocation distanceFromLocation:nowLocation];
+    //将http请求的字符串转换为NSURL
+    NSURL *URL =[NSURL URLWithString:htmodel.imgurl];
+    //依靠SDWebImage来异步地下载一张远程路径下的图片并三级缓存在项目中，同时为下载的时间周期过程中设置一张临时占位图
+    [cell.imageview sd_setImageWithURL:URL placeholderImage:[UIImage imageNamed:@"icon"]];
+    cell.nameLabel.text = htmodel.htname;
+    cell.placeLabel.text = htmodel.htadd;
+    cell.priceLabel.text =[NSString stringWithFormat:@"¥ %ld",(long)htmodel.htprice];
+    cell.distanceLabel.text = [NSString stringWithFormat:@"距离我%d公里",distanceMeters/1000];
     return cell;
 }
 
@@ -159,6 +156,14 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self networkRequest];
+    [_gethotelView reloadData];
+    
+    //清楚cell的缓存
+    NSArray *subviews = [[NSArray alloc] initWithArray:self.gethotelView.subviews];
+    for (UIView *subview in subviews) {
+        [subview removeFromSuperview];
+    }
+
     [_idSearchBar resignFirstResponder];
     _idSearchBar.text = @"";
     return YES;
@@ -344,6 +349,54 @@
     }
 }
 
+- (IBAction)paixu:(UIButton *)sender forEvent:(UIEvent *)event {
+    _lowtohight.selected = NO;
+    _highttolow.selected = NO;
+    _neartofar.selected = NO;
+    if (_paixu.selected == NO) {
+        _paixu.selected = YES;
+    }
+}
+//入住时间
+- (IBAction)livedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 0;
+    _datePicker.hidden = NO;
+    _dateView.hidden = NO;
+    _toolbarView.hidden = NO;
+}
+
+- (IBAction)leavedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
+    flag = 1;
+    _datePicker.hidden = NO;
+    _dateView.hidden = NO;
+    _toolbarView.hidden = NO;
+}
+
+- (IBAction)lowtohight:(UIButton *)sender forEvent:(UIEvent *)event {
+    _paixu.selected = NO;
+    _highttolow.selected = NO;
+    _neartofar.selected = NO;
+    if (_lowtohight.selected == NO) {
+        _lowtohight.selected = YES;
+    }
+}
+
+- (IBAction)hightTolow:(UIButton *)sender forEvent:(UIEvent *)event {
+    _paixu.selected = NO;
+    _lowtohight.selected = NO;
+    _neartofar.selected = NO;
+    if (_highttolow.selected == NO) {
+        _highttolow.selected = YES;
+    }
+}
+- (IBAction)neartofar:(UIButton *)sender forEvent:(UIEvent *)event {
+    _paixu.selected = NO;
+    _lowtohight.selected = NO;
+    _highttolow.selected = NO;
+    if (_neartofar.selected == NO) {
+        _neartofar.selected = YES;
+    }
+}
 //智能排序
 - (IBAction)screenBtn:(UIButton *)sender forEvent:(UIEvent *)event {
     self.sequenView.hidden = YES;
@@ -366,102 +419,8 @@
         [_sequenBtn setTitleColor:[UIColor blueColor]forState:UIControlStateNormal];
     }
 }
-//全部
-- (IBAction)allbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _fourbtn.selected = NO;
-    _fivebtn.selected = NO;
-    if (_allbtn.selected == NO) {
-        _allbtn.selected = YES;
-    }
-    
-}
-//四星
-- (IBAction)fourbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-     _allbtn.selected = NO;
-    _fivebtn.selected = NO;
-    if (_fourbtn.selected == NO) {
-        _fourbtn.selected = YES;
-    }
-    
-}
-//五星
-- (IBAction)fivebtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _fourbtn.selected = NO;
-     _allbtn.selected = NO;
-    if (_fivebtn.selected == NO) {
-        _fivebtn.selected = YES;
-    }
    
-}
-//不限
-- (IBAction)nobtn:(UIButton *)sender forEvent:(UIEvent *)event {
-     _threehundrebtn.selected = NO;
-    _fivehundred.selected = NO;
-    _tenhundred.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_nobtn.selected == NO) {
-        _nobtn.selected = YES;
-    }
-  
-}
-//300以下
-- (IBAction)threehundredbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _fivehundred.selected = NO;
-    _tenhundred.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_threehundrebtn.selected == NO) {
-        _threehundrebtn.selected = YES;
-    }
-   
-}
-//300-500
-- (IBAction)fivehundred:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _tenhundred.selected = NO;
-     _threehundrebtn.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_fivehundred.selected == NO) {
-        _fivehundred.selected = YES;
-    }
-   
-}
-//500-1000
-- (IBAction)tenhundred:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _fivehundred.selected = NO;
-     _threehundrebtn.selected = NO;
-    _tenuphundred.selected = NO;
-    if (_tenhundred.selected == NO) {
-        _tenhundred.selected = YES;
-    }
- 
-}
-//1000以上
-- (IBAction)tenhundredbtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    _nobtn.selected = NO;
-    _fivehundred.selected = NO;
-     _threehundrebtn.selected = NO;
-    _tenhundred.selected = NO;
-    if (_tenuphundred.selected == NO) {
-        _tenuphundred.selected = YES;
-    }
-    
-}
-//入住时间
-- (IBAction)livedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag = 0;
-    _datePicker.hidden = NO;
-    _dateView.hidden = NO;
-    _toolbarView.hidden = NO;
-}
 
-- (IBAction)leavedateBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    flag = 1;
-    _datePicker.hidden = NO;
-    _dateView.hidden = NO;
-     _toolbarView.hidden = NO;
-}
 //确认按钮
 - (IBAction)confirmBtn:(UIBarButtonItem *)sender {
     NSDate *date = _datePicker.date;
@@ -490,110 +449,96 @@
     _toolbarView.hidden = YES;
     _dateView.hidden = YES;
 }
-- (IBAction)BossBtn:(UIButton *)sender forEvent:(UIEvent *)event {
-    if (_allbtn.selected == YES) {
-        ar = 1;
-    }else if (_fourbtn.selected == YES){
-        ar = 2;
-    }else if (_fivebtn.selected == YES){
-        ar = 3;
-    }
-    if (_paixu.selected == YES) {
-        brr = @"1";
-    }else if (_lowtohight.selected == YES){
-        brr = @"2";
-    }else if (_highttolow.selected == YES){
-        brr = @"3";
-    }else if (_neartofar.selected == YES){
-        brr = @"4";
-    }
-    if (_nobtn.selected == YES) {
-        arryer = 1;
-    }else if (_threehundrebtn.selected == YES){
-        arryer = 2;
-    }else if (_fivehundred.selected == YES){
-        arryer = 3;
-    }else if (_tenhundred.selected == YES){
-        arryer = 4;
-    }else if (_tenuphundred.selected == YES){
-        arryer = 5;
-    }
-    //开始日期
-    NSTimeInterval startTime = [Utilities cTimestampFromString:_livedate.titleLabel.text format:@"yyyy-MM-dd"];
-    //结束日期
-    NSTimeInterval endTime = [Utilities cTimestampFromString:_leavedate.titleLabel.text format:@"yyyy-MM-dd"];
-    
-    if (startTime >= endTime) {
-        [_avi stopAnimating];
-        [Utilities popUpAlertViewWithMsg:@"请正确设置开始日期和结束日期" andTitle:@"提示" onView:self];
-    }else{
-        NSDictionary *para = @{@"pageNum":@(page),@"pageSize":@(perPage),@"inTime":@(startTime),@"outTime":@(endTime),@"sortingId":brr,@"startId":@(ar),@"priceId":@(arryer)};
-        NSLog(@"page = %ld  perPage = %ld  startTime = %f  endTime = %f  ar = %ld  brr = %@ priceId = %ld",(long)page,(long)perPage,startTime,endTime,(long)ar,brr,(long)arryer);
-        
-        NSString *urlstring=@"https://gethotels.fisheep.com.cn/hotel/findHotelByCity_edu";
-        AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-        manger.responseSerializer=[AFHTTPResponseSerializer serializer];
-        [manger GET:urlstring parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-            NSLog(@"dict = %@",dict);
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"请求失败");
-        }];
-        
-        
-           }
-}
+
 - (void)networkRequest{
-    NSString *urlstring=@"https://gethotels.fisheep.com.cn/findHotelById";
-    NSDictionary *param=@{@"id": _idSearchBar.text};
-    AFHTTPSessionManager *manger=[AFHTTPSessionManager manager];
-    manger.responseSerializer=[AFHTTPResponseSerializer serializer];
-    [manger GET:urlstring parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-        NSDictionary *result = dict[@"content"];
-        //NSLog(@"%@",result);
-        [_arr addObject:result];
-        //NSLog(@"_arr = %@",_arr);
-        //刷新表格
-        [_gethotelView reloadData];
-
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"请求失败");
+    // 创建菊花膜
+    _aiv = [Utilities getCoverOnView:self.view];
+    //设置接口地址
+    NSString *request = @"/findHotelById";
+    //设置接口入参
+    //开始请求
+    [RequestAPI requestURL:request withParameters:@{@"id":_idSearchBar.text} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //成功以后要做的事情在此处执行
+        NSLog(@"responseObject = %@", responseObject);
+        [_aiv stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1){
+            //业务逻辑成功的情况下
+            NSDictionary * result = responseObject[@"content"];
+            
+            //NSLog(@"result = %@",result);
+            /*for (NSDictionary *dict in content)
+             //用ActivityModel类中定义的初始化方法nitWithDictionary:将便利的来的字典转换成为ActivityModel 对象
+             HotelModel *activityModel = [[HotelModel alloc]initWithDictionary:dict];
+             //将上述实例化好的activityModel对象插入——arr数组中*/
+            
+            [_arr addObject:result];
+            //NSLog(@"_brr = %@",_brr);
+            
+            //刷新表格
+            [_gethotelView reloadData];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *orrorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:orrorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //失败以后要做的事情在此处执行
+        NSLog(@"statusCode = %ld",(long)statusCode);
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
     }];
+    
+
 }
 
-- (IBAction)paixu:(UIButton *)sender forEvent:(UIEvent *)event {
-    _lowtohight.selected = NO;
-    _highttolow.selected = NO;
-    _neartofar.selected = NO;
-    if (_paixu.selected == NO) {
-        _paixu.selected = YES;
-    }
-}
-- (IBAction)lowtohight:(UIButton *)sender forEvent:(UIEvent *)event {
-    _paixu.selected = NO;
-    _highttolow.selected = NO;
-    _neartofar.selected = NO;
-    if (_lowtohight.selected == NO) {
-        _lowtohight.selected = YES;
-    }
+-(void)mainnetworRequest{
+    //开始请求
+    //NSDictionary * para = [NSDictionary new];
+    NSString *inTimeStr = [Utilities dateStrFromCstampTime:_inTime withDateFormat:@"yyyy-MM-dd HH:mm"];
+    NSString *outTimeStr = [Utilities dateStrFromCstampTime:_outTime withDateFormat:@"yyyy-MM-dd HH:mm"];
+    pagenum = 1;
+    pagesize = 20;
+    [RequestAPI requestURL:@"/findHotelByCity_edu" withParameters:@{@"city_name":@"无锡",@"pageNum":@(pagenum),@"pageSize":@(pagesize),@"startId":@1,@"priceId":@1,@"sortingId":@"1",@"inTime":inTimeStr,@"outTime":outTimeStr,@"wxlongitude":@"",@"wxlatitude":@""} andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
+        //成功以后要做的事情在此处执行
+        NSLog(@"responseObject = %@", responseObject);
+        [_aiv stopAnimating];
+        if ([responseObject[@"result"] integerValue] == 1){
+            //业务逻辑成功的情况下
+            NSDictionary * content = responseObject[@"content"];
+            NSDictionary * hotel = content[@"hotel"];
+            NSArray * list = hotel[@"list"];
+            
+            
+            //NSLog(@"content = %@",content);
+            //NSLog(@"hotel = %@",hotel);
+            //NSLog(@"list = %@",list);
+            
+            for (NSDictionary *dict in list){
+                //用ActivityModel类中定义的初始化方法nitWithDictionary:将便利的来的字典转换成为ActivityModel 对象
+                HotelModel *htModel = [[HotelModel alloc]initWithDictionary:dict];
+                //将上述实例化好的activityModel对象插入——arr数组中
+                [_arr addObject:htModel];
+                //NSLog(@"dict = %@",htModel);
+            }
+            //刷新表格
+            [_gethotelView reloadData];
+            
+        }else{
+            //业务逻辑失败的情况下
+            NSString *orrorMsg = [ErrorHandler getProperErrorString:[responseObject[@"resultFlag"] integerValue]];
+            [Utilities popUpAlertViewWithMsg:orrorMsg andTitle:nil onView:self];
+        }
+        
+    } failure:^(NSInteger statusCode, NSError *error) {
+        //失败以后要做的事情在此处执行
+        NSLog(@"statusCode = %ld",(long)statusCode);
+        [_aiv stopAnimating];
+        [Utilities popUpAlertViewWithMsg:@"请保持网络连接畅通" andTitle:nil onView:self];
+    }];
+    
+    
 }
 
-- (IBAction)hightTolow:(UIButton *)sender forEvent:(UIEvent *)event {
-    _paixu.selected = NO;
-    _lowtohight.selected = NO;
-    _neartofar.selected = NO;
-    if (_highttolow.selected == NO) {
-        _highttolow.selected = YES;
-    }
-}
-- (IBAction)neartofar:(UIButton *)sender forEvent:(UIEvent *)event {
-    _paixu.selected = NO;
-    _lowtohight.selected = NO;
-    _highttolow.selected = NO;
-    if (_neartofar.selected == NO) {
-        _neartofar.selected = YES;
-    }
-}
 @end
