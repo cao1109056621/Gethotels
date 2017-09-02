@@ -85,7 +85,6 @@
                                             <outlet property="nameLabel" destination="Qc0-O6-HAe" id="ds3-kp-UE2"/>
                                             <outlet property="placeLabel" destination="3BQ-hW-IdQ" id="ZEp-Ul-Hkg"/>
                                             <outlet property="priceLabel" destination="hWP-aB-FN6" id="ytH-RX-I5m"/>
-                                            <segue destination="a1F-a4-9BW" kind="show" identifier="firstTOsecond" id="XxQ-99-Uu8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
