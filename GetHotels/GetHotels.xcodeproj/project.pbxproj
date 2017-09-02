@@ -46,6 +46,11 @@
 		84562D591F57E112007B95DA /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84562D581F57E112007B95DA /* Second.storyboard */; };
 		84562D5B1F57E133007B95DA /* Third.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84562D5A1F57E133007B95DA /* Third.storyboard */; };
 		84562D5D1F57E14E007B95DA /* Four.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84562D5C1F57E14E007B95DA /* Four.storyboard */; };
+		8461102C1F5A513E00DD9CDD /* MyhotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846110231F5A513E00DD9CDD /* MyhotelViewController.m */; };
+		8461102D1F5A513E00DD9CDD /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846110251F5A513E00DD9CDD /* MyTableViewCell.m */; };
+		8461102E1F5A513E00DD9CDD /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846110271F5A513E00DD9CDD /* SigninViewController.m */; };
+		8461102F1F5A513E00DD9CDD /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846110291F5A513E00DD9CDD /* SignupViewController.m */; };
+		846110301F5A513E00DD9CDD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8461102B1F5A513E00DD9CDD /* ViewController.m */; };
 		846B26241F57ED8E00F4876B /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 846B26231F57ED8E00F4876B /* UserModel.m */; };
 		84D05D761F58EAB9008EA853 /* GethotelModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D05D751F58EAB9008EA853 /* GethotelModel.m */; };
 		84D05D881F58ECE9008EA853 /* reserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D05D871F58ECE9008EA853 /* reserViewController.m */; };
@@ -167,6 +172,16 @@
 		84562D581F57E112007B95DA /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		84562D5A1F57E133007B95DA /* Third.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Third.storyboard; sourceTree = "<group>"; };
 		84562D5C1F57E14E007B95DA /* Four.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Four.storyboard; sourceTree = "<group>"; };
+		846110221F5A513E00DD9CDD /* MyhotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyhotelViewController.h; sourceTree = "<group>"; };
+		846110231F5A513E00DD9CDD /* MyhotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyhotelViewController.m; sourceTree = "<group>"; };
+		846110241F5A513E00DD9CDD /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		846110251F5A513E00DD9CDD /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		846110261F5A513E00DD9CDD /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
+		846110271F5A513E00DD9CDD /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
+		846110281F5A513E00DD9CDD /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
+		846110291F5A513E00DD9CDD /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		8461102A1F5A513E00DD9CDD /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8461102B1F5A513E00DD9CDD /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		846B26221F57ED8E00F4876B /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		846B26231F57ED8E00F4876B /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		84D05D741F58EAB9008EA853 /* GethotelModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GethotelModel.h; sourceTree = "<group>"; };
@@ -260,6 +275,7 @@
 				84562CDE1F57DE6E007B95DA /* 3rd */,
 				84562CF21F57DE6E007B95DA /* Constant */,
 				84562CF41F57DE6E007B95DA /* Controller */,
+				846110211F5A513E00DD9CDD /* MyAndsignin */,
 				84562CF51F57DE6E007B95DA /* Model */,
 				84562CFA1F57DE6E007B95DA /* Utility */,
 				B22B458A1F57FE3100F3DE8A /* main */,
@@ -471,6 +487,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		846110211F5A513E00DD9CDD /* MyAndsignin */ = {
+			isa = PBXGroup;
+			children = (
+				846110221F5A513E00DD9CDD /* MyhotelViewController.h */,
+				846110231F5A513E00DD9CDD /* MyhotelViewController.m */,
+				846110241F5A513E00DD9CDD /* MyTableViewCell.h */,
+				846110251F5A513E00DD9CDD /* MyTableViewCell.m */,
+				846110261F5A513E00DD9CDD /* SigninViewController.h */,
+				846110271F5A513E00DD9CDD /* SigninViewController.m */,
+				846110281F5A513E00DD9CDD /* SignupViewController.h */,
+				846110291F5A513E00DD9CDD /* SignupViewController.m */,
+				8461102A1F5A513E00DD9CDD /* ViewController.h */,
+				8461102B1F5A513E00DD9CDD /* ViewController.m */,
+			);
+			name = MyAndsignin;
+			path = GetHotels/MyAndsignin;
+			sourceTree = SOURCE_ROOT;
+		};
 		B22B458A1F57FE3100F3DE8A /* main */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +681,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8461102F1F5A513E00DD9CDD /* SignupViewController.m in Sources */,
 				84562D3D1F57DE6E007B95DA /* JSONS.m in Sources */,
 				B22B45991F57FE3100F3DE8A /* locationViewController.m in Sources */,
 				84562D431F57DE6E007B95DA /* StorageMgr.m in Sources */,
@@ -685,11 +720,15 @@
 				84562D3B1F57DE6E007B95DA /* AppAPIClient.m in Sources */,
 				84D05D881F58ECE9008EA853 /* reserViewController.m in Sources */,
 				84562D2E1F57DE6E007B95DA /* SDCycleScrollView.m in Sources */,
+				8461102E1F5A513E00DD9CDD /* SigninViewController.m in Sources */,
 				84562CAD1F57DD6C007B95DA /* AppDelegate.m in Sources */,
+				8461102D1F5A513E00DD9CDD /* MyTableViewCell.m in Sources */,
+				846110301F5A513E00DD9CDD /* ViewController.m in Sources */,
 				84562CAA1F57DD6C007B95DA /* main.m in Sources */,
 				84562D451F57DE6E007B95DA /* Utilities.m in Sources */,
 				84562D2C1F57DE6E007B95DA /* TAPageControl.m in Sources */,
 				B22B45951F57FE3100F3DE8A /* cityModel.m in Sources */,
+				8461102C1F5A513E00DD9CDD /* MyhotelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
