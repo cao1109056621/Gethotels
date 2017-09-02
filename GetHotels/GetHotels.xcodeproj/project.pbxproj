@@ -52,11 +52,6 @@
 		84D05D8E1F58ED43008EA853 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D05D8D1F58ED43008EA853 /* MapViewController.m */; };
 		84D05D911F58ED59008EA853 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D05D901F58ED59008EA853 /* Annotation.m */; };
 		84D05DAB1F58F39E008EA853 /* PurchaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84D05DAA1F58F39E008EA853 /* PurchaseTableViewController.m */; };
-		84F5EFA11F593263001F477C /* MyhotelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5EF981F593263001F477C /* MyhotelViewController.m */; };
-		84F5EFA21F593263001F477C /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5EF9A1F593263001F477C /* MyTableViewCell.m */; };
-		84F5EFA31F593263001F477C /* SigninViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5EF9C1F593263001F477C /* SigninViewController.m */; };
-		84F5EFA41F593263001F477C /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5EF9E1F593263001F477C /* SignupViewController.m */; };
-		84F5EFA51F593263001F477C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5EFA01F593263001F477C /* ViewController.m */; };
 		84F5EFB31F593B0D001F477C /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84562D4F1F57DF98007B95DA /* AlipaySDK.framework */; };
 		84F5EFB41F593B0D001F477C /* Openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84562D521F57DF98007B95DA /* Openssl.framework */; };
 		84F5EFB51F593B0D001F477C /* AlipaySDK.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 84562D4E1F57DF98007B95DA /* AlipaySDK.bundle */; };
@@ -186,16 +181,6 @@
 		84D05DAA1F58F39E008EA853 /* PurchaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PurchaseTableViewController.m; path = GetHotels/Model/PurchaseTableViewController.m; sourceTree = SOURCE_ROOT; };
 		84D05DB11F58FD5E008EA853 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		84D05DB31F58FDD3008EA853 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		84F5EF971F593263001F477C /* MyhotelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyhotelViewController.h; sourceTree = "<group>"; };
-		84F5EF981F593263001F477C /* MyhotelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyhotelViewController.m; sourceTree = "<group>"; };
-		84F5EF991F593263001F477C /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
-		84F5EF9A1F593263001F477C /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
-		84F5EF9B1F593263001F477C /* SigninViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigninViewController.h; sourceTree = "<group>"; };
-		84F5EF9C1F593263001F477C /* SigninViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigninViewController.m; sourceTree = "<group>"; };
-		84F5EF9D1F593263001F477C /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
-		84F5EF9E1F593263001F477C /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
-		84F5EF9F1F593263001F477C /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		84F5EFA01F593263001F477C /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		84F5EFB21F593A00001F477C /* GetHotelsUITests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GetHotelsUITests copy-Info.plist"; path = "/Users/cj/Desktop/姚文博/项目/GetHotels/GetHotelsUITests copy-Info.plist"; sourceTree = "<absolute>"; };
 		B22B458B1F57FE3100F3DE8A /* cityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cityModel.h; sourceTree = "<group>"; };
 		B22B458C1F57FE3100F3DE8A /* cityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cityModel.m; sourceTree = "<group>"; };
@@ -274,7 +259,6 @@
 			children = (
 				84562CDE1F57DE6E007B95DA /* 3rd */,
 				84562CF21F57DE6E007B95DA /* Constant */,
-				84F5EF961F593263001F477C /* MyAndsignin */,
 				84562CF41F57DE6E007B95DA /* Controller */,
 				84562CF51F57DE6E007B95DA /* Model */,
 				84562CFA1F57DE6E007B95DA /* Utility */,
@@ -487,24 +471,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		84F5EF961F593263001F477C /* MyAndsignin */ = {
-			isa = PBXGroup;
-			children = (
-				84F5EF971F593263001F477C /* MyhotelViewController.h */,
-				84F5EF981F593263001F477C /* MyhotelViewController.m */,
-				84F5EF991F593263001F477C /* MyTableViewCell.h */,
-				84F5EF9A1F593263001F477C /* MyTableViewCell.m */,
-				84F5EF9B1F593263001F477C /* SigninViewController.h */,
-				84F5EF9C1F593263001F477C /* SigninViewController.m */,
-				84F5EF9D1F593263001F477C /* SignupViewController.h */,
-				84F5EF9E1F593263001F477C /* SignupViewController.m */,
-				84F5EF9F1F593263001F477C /* ViewController.h */,
-				84F5EFA01F593263001F477C /* ViewController.m */,
-			);
-			name = MyAndsignin;
-			path = "../../../../酒店管理/GetHotels/GetHotels/MyAndsignin";
-			sourceTree = "<group>";
-		};
 		B22B458A1F57FE3100F3DE8A /* main */ = {
 			isa = PBXGroup;
 			children = (
@@ -687,13 +653,11 @@
 				84D05D761F58EAB9008EA853 /* GethotelModel.m in Sources */,
 				84562D371F57DE6E007B95DA /* NSDataEx.m in Sources */,
 				84562D361F57DE6E007B95DA /* MD5DataSigner.m in Sources */,
-				84F5EFA41F593263001F477C /* SignupViewController.m in Sources */,
 				84562D411F57DE6E007B95DA /* NSString+Crypt.m in Sources */,
 				84562D2A1F57DE6E007B95DA /* TAAnimatedDotView.m in Sources */,
 				84562D3F1F57DE6E007B95DA /* NSDate+Utility.m in Sources */,
 				84562D291F57DE6E007B95DA /* TAAbstractDotView.m in Sources */,
 				84562D2D1F57DE6E007B95DA /* SDCollectionViewCell.m in Sources */,
-				84F5EFA21F593263001F477C /* MyTableViewCell.m in Sources */,
 				84562D391F57DE6E007B95DA /* RSADataSigner.m in Sources */,
 				84562D311F57DE6E007B95DA /* Order.m in Sources */,
 				84562D3A1F57DE6E007B95DA /* RSADataVerifier.m in Sources */,
@@ -703,12 +667,10 @@
 				84562D341F57DE6E007B95DA /* DataSigner.m in Sources */,
 				846B26241F57ED8E00F4876B /* UserModel.m in Sources */,
 				84562D321F57DE6E007B95DA /* GBAlipayManager.m in Sources */,
-				84F5EFA31F593263001F477C /* SigninViewController.m in Sources */,
 				84562D421F57DE6E007B95DA /* RequestAPI.m in Sources */,
 				84562D401F57DE6E007B95DA /* NSDateFormatter+Category.m in Sources */,
 				B22B45981F57FE3100F3DE8A /* HotelViewController.m in Sources */,
 				84562D381F57DE6E007B95DA /* openssl_wrapper.m in Sources */,
-				84F5EFA51F593263001F477C /* ViewController.m in Sources */,
 				84D05DAB1F58F39E008EA853 /* PurchaseTableViewController.m in Sources */,
 				84D05D8E1F58ED43008EA853 /* MapViewController.m in Sources */,
 				84562D3C1F57DE6E007B95DA /* ErrorHandler.m in Sources */,
@@ -718,7 +680,6 @@
 				84562CB61F57DD6C007B95DA /* GetHotels.xcdatamodeld in Sources */,
 				B22B45971F57FE3100F3DE8A /* HotelTableViewCell.m in Sources */,
 				84562D2B1F57DE6E007B95DA /* TADotView.m in Sources */,
-				84F5EFA11F593263001F477C /* MyhotelViewController.m in Sources */,
 				84562D2F1F57DE6E007B95DA /* UIView+SDExtension.m in Sources */,
 				B22B45961F57FE3100F3DE8A /* cityViewController.m in Sources */,
 				84562D3B1F57DE6E007B95DA /* AppAPIClient.m in Sources */,

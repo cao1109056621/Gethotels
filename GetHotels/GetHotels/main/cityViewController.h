@@ -6,8 +6,8 @@
 //  Copyright © 2017年 Education. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "cityViewController.h"
 
-@interface cityViewController : ViewController
+@interface cityViewController : UIViewController
 
 @end
