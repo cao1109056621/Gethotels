@@ -14,7 +14,7 @@
         <!--酒店预订-->
         <scene sceneID="T1a-oa-gBt">
             <objects>
-                <viewController id="QES-Oy-4GD" customClass="reserViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Second" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QES-Oy-4GD" customClass="reserViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="URw-Lm-l6F"/>
                         <viewControllerLayoutGuide type="bottom" id="EDU-T1-TjN"/>
@@ -521,7 +521,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="银行" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KuO-Ny-7dx">
-                                            <rect key="frame" x="16" y="0.0" width="344" height="43.5"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
