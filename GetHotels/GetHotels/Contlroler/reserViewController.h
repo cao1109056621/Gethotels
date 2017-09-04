@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GethotelModel.h"
+
 @interface reserViewController : UIViewController
 @property (strong,nonatomic)  GethotelModel *hotel;
 @end

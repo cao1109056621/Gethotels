@@ -30,6 +30,8 @@
 - (IBAction)confirmAction:(UIBarButtonItem *)sender;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePickerView;
 @property (weak, nonatomic) IBOutlet UIView *laiview;
+@property (weak, nonatomic) IBOutlet UIView *laview;
+
 @property (weak, nonatomic) IBOutlet UIButton *mapBtn;
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event;
 @property (weak, nonatomic) IBOutlet UILabel *hotelprice;
@@ -60,6 +62,12 @@
     NSArray *_imagesURLStrings;
     SDCycleScrollView *_customCellScrollViewDemo;
 }
+
+//每次将要来到这个页面的时候
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self hideTabBar];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -76,10 +84,27 @@
 
 - (void)naviConfig{
     //设置导航条标题文字
-    self.navigationItem.title = @"入住酒店支付";
-    //为导航条左上角创建一个按钮
-    UIBarButtonItem *left = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(beckAction)];
-    self.navigationItem.leftBarButtonItem = left;
+    self.navigationItem.title = @"酒店预定";
+    
+    //设置导航条的颜色（风格颜色）
+    //self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
+    //设置导航条标题的颜色
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    
+    //实例化一个button 类型为UIButtonTypeSystem
+    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    //设置位置大小
+    leftBtn.frame = CGRectMake(0, 0, 20, 20);
+    //设置其背景图片为返回图片
+    [leftBtn setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    //给按钮添加事件
+    [leftBtn addTarget:self action:@selector(leftButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+}
+//自定的返回按钮的事件
+- (void)leftButtonAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)custom{
@@ -91,7 +116,7 @@
     NSArray *imageNames = @[@"reser1",@"reser2",@"reser3",@"reser4"];
     
     // 网络加载 --- 创建带标题的图片轮播器
-    SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, -64, UI_SCREEN_W, 150) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    SDCycleScrollView *cycleScrollView2 = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, UI_SCREEN_W, 160) delegate:self placeholderImage:[UIImage imageNamed:@"placeholder"]];
     
     cycleScrollView2.pageControlAliment = SDCycleScrollViewPageContolAlimentRight;
     //cycleScrollView2.titlesGroup = titles;
@@ -109,7 +134,7 @@
     _aiv = [Utilities getCoverOnView:self.view];
     //开始请求
     //num=20;
-    NSDictionary* para = @{@"id":@20};
+    NSDictionary* para = @{@"id":@12};
     [RequestAPI requestURL:@"/hotel/findHotelById" withParameters:para andHeader:nil byMethod:kGet andSerializer:kForm success:^(id responseObject) {
         NSLog(@"responseObject = %@",responseObject);
         [_aiv stopAnimating];
@@ -272,28 +297,43 @@
  
  
  */
--(void)beckAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    //[self.navigationController popViewControllerAnimated:YES];
+//隐藏底部导航栏
+- (void)hideTabBar {
+    if (self.tabBarController.tabBar.hidden == YES) {
+        return;
+    }
+    UIView *contentView;
+    if ( [[self.tabBarController.view.subviews objectAtIndex:0] isKindOfClass:[UITabBar class]] )
+        contentView = [self.tabBarController.view.subviews objectAtIndex:1];
+    else
+        contentView = [self.tabBarController.view.subviews objectAtIndex:0];
+    contentView.frame = CGRectMake(contentView.bounds.origin.x,  contentView.bounds.origin.y,  contentView.bounds.size.width, contentView.bounds.size.height + self.tabBarController.tabBar.frame.size.height);
+    self.tabBarController.tabBar.hidden = YES;
+    
 }
+
 
 - (IBAction)startDateAction:(UIButton *)sender forEvent:(UIEvent *)event {
     flag = 0;
     _toolBar.hidden = NO;
     _datePickerView.hidden = NO;
     _laiview.hidden = NO;
+    _laview.hidden = NO;
+    
 }
 - (IBAction)endDateAction:(UIButton *)sender forEvent:(UIEvent *)event {
     flag = 1;
     _toolBar.hidden = NO;
     _datePickerView.hidden = NO;
     _laiview.hidden = NO;
+    _laview.hidden = NO;
 }
 
 - (IBAction)cancelAction:(UIBarButtonItem *)sender {
     _toolBar.hidden = YES;
     _datePickerView.hidden = YES;
     _laiview.hidden = YES;
+    _laview.hidden = YES;
 }
 
 - (IBAction)confirmAction:(UIBarButtonItem *)sender {
@@ -315,21 +355,22 @@
     _toolBar.hidden = YES;
     _datePickerView.hidden = YES;
     _laiview.hidden = YES;
+    _laview.hidden = YES;
 }
 - (IBAction)mapAction:(UIButton *)sender forEvent:(UIEvent *)event {
 }
 - (IBAction)payAction:(UIButton *)sender forEvent:(UIEvent *)event {
-    //if ([Utilities loginCheck])
+    //if ([Utilities loginCheck]){
     PurchaseTableViewController *purchaseVC = [Utilities getStoryboardInstance:@"Second" byIdentity:@"purchase"];
     purchaseVC.hotel = _hotel;
     [self.navigationController pushViewController:purchaseVC animated:YES];
-    
-    /*else{
-     //获取要跳转过去的那个页面
-     UINavigationController *signNavi = [Utilities getStoryboardInstance:@"" byIdentity:@""];
-     //执行跳转
-     [self presentViewController:signNavi animated:YES completion:nil];
-     }*/
-    
+    //}
+   // else{
+//     //获取要跳转过去的那个页面
+//     UINavigationController *signNavi = [Utilities getStoryboardInstance:@"Third" byIdentity:@"signin"];
+//     //执行跳转
+//     [self presentViewController:signNavi animated:YES completion:nil];
+//     }
+//    
 }
 @end
